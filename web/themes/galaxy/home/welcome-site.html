@@ -8,144 +8,191 @@
 	.home-container i{display:block; color:#333; height:1em; overflow: hidden; font-size:2em; margin:.25em .2em;}
 	.home-container span{display:block; width:100%; overflow:hidden;}
 </style>
-<div class="page-header">
-	<h4><i class="fa fa-comments"></i> 当前站点</h4>
-</div>
-<div class="panel panel-default row">
-	<div class="table-responsive panel-body">
-	<table class="table">
-		<tr>
-			<td style="width:200px; border-top:none;">
-				<div class="">
-					<div class="item">
-						<div class="title">
-							<img src="../app/themes/{$template['name']}/preview.jpg" class="img-rounded" />
-						</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="box box-info">
+			<div class="box-header with-border">
+				<h3 class="box-title"><i class="fa fa-comments"></i> 当前站点</h3>
+				<div class="box-tools pull-right">
+					<button class="btn btn-box-tool" data-widget="collapse">
+						<i class="fa fa-minus"></i>
+					</button>
+					<button class="btn btn-box-tool" data-widget="remove">
+						<i class="fa fa-times"></i>
+					</button>
+				</div>
+			</div>
+			<div class="box-body">
+				<div class="panel panel-default row">
+					<div class="table-responsive panel-body">
+					<table class="table">
+						<tr>
+							<td style="width:200px; border-top:none;">
+								<div class="">
+									<div class="item">
+										<div class="title">
+											<img src="../app/themes/{$template['name']}/preview.jpg" class="img-rounded" />
+										</div>
+									</div>
+								</div>
+							</td>
+							<td style="border-top:none;">
+								<p>
+									<strong>微站入口触发关键字 : </strong>
+									{loop $keywords $keyword}
+										<span class="label label-success">{$keyword['content']}</span>
+									{/loop}
+								</p>
+								<p><a href="javascript:;" onclick="preview_home('{$setting['styleid']}', '{$setting['id']}');return false;" class="btn btn-default">预览</a></p>
+							</td>
+						</tr>
+					</table>
 					</div>
 				</div>
-			</td>
-			<td style="border-top:none;">
-				<p>
-					<strong>微站入口触发关键字 : </strong>
-					{loop $keywords $keyword}
-						<span class="label label-success">{$keyword['content']}</span>
-					{/loop}
-				</p>
-				<p><a href="javascript:;" onclick="preview_home('{$setting['styleid']}', '{$setting['id']}');return false;" class="btn btn-default">预览</a></p>
-			</td>
-		</tr>
-	</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="box box-success">
+			<div class="box-header with-border">
+				<h3 class="box-title"><i class="fa fa-android"></i> 站点导航图标</h3>
+				<div class="box-tools pull-right">
+					<button class="btn btn-box-tool" data-widget="collapse">
+						<i class="fa fa-minus"></i>
+					</button>
+					<button class="btn btn-box-tool" data-widget="remove">
+						<i class="fa fa-times"></i>
+					</button>
+				</div>
+			</div>
+			<div class="box-body">
+				<div class="panel panel-default">
+					<div class="panel-body table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="width:200px">导航及菜单</th>
+								<th>概况</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>微站首页导航图标</td>
+								<td>
+									<div class="home-container">
+										{loop $home_navs $nav}
+										<a href="javascript:viod(0);" class="tile text-center btn btn-default">
+											{if !empty($nav['icon'])}
+											<i style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;{$nav['css']['icon']['style']} height:1em; margin:.25em .4em;"></i>
+											{else}
+											<i class="fa {$nav['css']['icon']['icon']}"></i>
+											{/if}
+											<span style="{$nav['css']['name']}" title="{$nav['name']}">{$nav['name']}</span>
+										</a>
+										{/loop}
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>个人中心导航条目</td>
+								<td>
+									<div class="home-container">
+										{loop $profile_navs $nav}
+										<a href="javascript:viod(0);" class="tile text-center btn btn-default">
+											{if !empty($nav['icon'])}
+											<i style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;{$nav['css']['icon']['style']}"></i>
+											{else}
+											<i class="fa {$nav['css']['icon']['icon']}"></i>
+											{/if}
+											<span style="{$nav['css']['name']}" title="{$nav['name']}">{$nav['name']}</span>
+										</a>
+										{/loop}
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>快捷菜单</td>
+								<td>
+									<div class="home-container">
+										{loop $shortcut_navs $nav}
+										<a href="javascript:viod(0);" class="tile text-center btn btn-default">
+											{if !empty($nav['icon'])}
+											<i style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;{$nav['css']['icon']['style']}"></i>
+											{else}
+											<i class="fa {$nav['css']['icon']['icon']}"></i>
+											{/if}
+											<span style="{$nav['css']['name']}" title="{$nav['name']}">{$nav['name']}</span>
+										</a>
+										{/loop}
+									</div>
+									<p style="padding-left:7px"><strong>当前使用的快捷菜单模板 : </strong><span class="label label-success">{$quickmenu['template']}</span>
+									<a href="javascript:;" onclick="preview_quick('{$quickmenu['template']}', '{$setting['id']}');return false;" class="btn btn-default">预览快捷菜单</a></p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>			
+		</div>
 	</div>
 </div>
-<div class="page-header">
-	<h4><i class="fa fa-android"></i> 站点导航图标</h4>
-</div>
-<div class="panel panel-default">
-	<div class="panel-body table-responsive">
-	<table class="table">
-		<thead>
-			<tr>
-				<th style="width:200px">导航及菜单</th>
-				<th>概况</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>微站首页导航图标</td>
-				<td>
-					<div class="home-container">
-						{loop $home_navs $nav}
-						<a href="javascript:viod(0);" class="tile text-center btn btn-default">
-							{if !empty($nav['icon'])}
-							<i style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;{$nav['css']['icon']['style']} height:1em; margin:.25em .4em;"></i>
-							{else}
-							<i class="fa {$nav['css']['icon']['icon']}"></i>
-							{/if}
-							<span style="{$nav['css']['name']}" title="{$nav['name']}">{$nav['name']}</span>
-						</a>
-						{/loop}
+<div class="row">
+	<div class="col-md-12">
+		<div class="box box-default">
+			<div class="box-header with-border">
+					<h3 class="box-title"><i class="fa fa-cogs"></i> 幻灯片设置</h3>
+					<div class="box-tools pull-right">
+						<button class="btn btn-box-tool" data-widget="collapse">
+							<i class="fa fa-minus"></i>
+						</button>
+						<button class="btn btn-box-tool" data-widget="remove">
+							<i class="fa fa-times"></i>
+						</button>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>个人中心导航条目</td>
-				<td>
-					<div class="home-container">
-						{loop $profile_navs $nav}
-						<a href="javascript:viod(0);" class="tile text-center btn btn-default">
-							{if !empty($nav['icon'])}
-							<i style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;{$nav['css']['icon']['style']}"></i>
-							{else}
-							<i class="fa {$nav['css']['icon']['icon']}"></i>
-							{/if}
-							<span style="{$nav['css']['name']}" title="{$nav['name']}">{$nav['name']}</span>
-						</a>
-						{/loop}
+			</div>
+			<div class="box-body">
+				<div class="panel panel-default row">
+					<div class="panel-body table-responsive">
+						<table class="table">
+							<tr>
+								<td style="border-top:0;">
+									{if !empty($slides)}
+										<div id="carousel-example-generic" class="carousel slide" style="width:600px" data-ride="carousel">
+											<ol class="carousel-indicators">
+											{loop $slides $a $slide} 
+												<li data-target="#carousel-example-generic" data-slide-to="0"  {if $a == 0}class="active"{/if}></li>
+											{/loop}
+											</ol>
+											<div class="carousel-inner">
+												{loop $slides $a $slide} 
+												<div class="item {if $a == 0}active{/if}">
+													<img src="{$slide['thumb']}" alt="{$slide['title']}" style="height:300px; margin-left:auto; margin-right: auto;">
+													<div class="carousel-caption">
+														<h5>{$slide['title']}</h5>
+													</div>
+												</div>
+												{/loop}
+											</div>
+											<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+												<span class="glyphicon glyphicon-chevron-left"></span>
+											</a>
+											<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+												<span class="glyphicon glyphicon-chevron-right"></span>
+											</a>
+										</div>
+									{/if}
+								</td>
+							</tr>
+						</table>
 					</div>
-				</td>
-			</tr>
-			<tr>
-				<td>快捷菜单</td>
-				<td>
-					<div class="home-container">
-						{loop $shortcut_navs $nav}
-						<a href="javascript:viod(0);" class="tile text-center btn btn-default">
-							{if !empty($nav['icon'])}
-							<i style="background:url({$_W['attachurl']}{$nav['icon']}) no-repeat;background-size:cover;{$nav['css']['icon']['style']}"></i>
-							{else}
-							<i class="fa {$nav['css']['icon']['icon']}"></i>
-							{/if}
-							<span style="{$nav['css']['name']}" title="{$nav['name']}">{$nav['name']}</span>
-						</a>
-						{/loop}
-					</div>
-					<p style="padding-left:7px"><strong>当前使用的快捷菜单模板 : </strong><span class="label label-success">{$quickmenu['template']}</span>
-					<a href="javascript:;" onclick="preview_quick('{$quickmenu['template']}', '{$setting['id']}');return false;" class="btn btn-default">预览快捷菜单</a></p>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</div>
+				</div>
+			</div>	
+		</div>
+	</div>
 </div>
 
-<div class="page-header">
-	<h4><i class="fa fa-cogs"></i> 幻灯片设置</h4>
-</div>
-<div class="panel panel-default row">
-	<div class="panel-body table-responsive">
-	<table class="table">
-		<tr>
-			<td style="border-top:0;">
-				{if !empty($slides)}
-					<div id="carousel-example-generic" class="carousel slide" style="width:600px" data-ride="carousel">
-						<ol class="carousel-indicators">
-						{loop $slides $a $slide} 
-							<li data-target="#carousel-example-generic" data-slide-to="0"  {if $a == 0}class="active"{/if}></li>
-						{/loop}
-						</ol>
-						<div class="carousel-inner">
-							{loop $slides $a $slide} 
-							<div class="item {if $a == 0}active{/if}">
-								<img src="{$slide['thumb']}" alt="{$slide['title']}" style="height:300px; margin-left:auto; margin-right: auto;">
-								<div class="carousel-caption">
-									<h5>{$slide['title']}</h5>
-								</div>
-							</div>
-							{/loop}
-						</div>
-						<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left"></span>
-						</a>
-						<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right"></span>
-						</a>
-					</div>
-				{/if}
-			</td>
-		</tr>
-	</table>
-</div>
-</div>
 <script type="text/javascript">
 	function preview_home(styleid, multiid) {
 		require(['jquery', 'util'], function($, u){

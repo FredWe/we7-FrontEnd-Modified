@@ -4360,3 +4360,11 @@ fieldset[disabled] .btn-vk.active {
     white-space: normal!important;
   }
 }
+
+
+/*
+ * The last modification here:
+ */
+.nav.nav-tabs{margin-bottom:0px; border-color:#428bca;}
+h5.page-header{padding-top:10px; }
+/*.main-footer{padding:30px; }*/

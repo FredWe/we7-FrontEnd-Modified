@@ -1,25 +1,40 @@
 {template 'common/header'}
-<ul class="nav nav-tabs">
-	<li class="active"><a href="{php echo url('home/welcome/' . $do);}">账号概况 - {$title}</a></li>
-</ul>
-<div class="clearfix welcome-container">
-	{if $do != 'ext' && $do != 'solution'}
-	<div class="page-header">
-		<h4><i class="fa fa-plane"></i> 快捷操作</h4>
-	</div>
-	<div class="shortcut clearfix">
-		<a href="{php echo url('platform/reply', array('m' => 'userapi'))}">
-			<i class="fa fa-sitemap"></i>
-			<span>自定义接口</span>
-		</a>
-		{loop $shortcuts $shortcut}
-			<a href="{$shortcut['link']}" title="{$shortcut['title']}">
-				<img src="{$shortcut['image']}" alt="{$shortcut['title']}" class="img-rounded" />
-				<span>{$shortcut['title']}</span>
-			</a>
-		{/loop}
-	</div>
-	{/if}
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="{php echo url('home/welcome/' . $do);}">账号概况 - {$title}</a></li>
+	</ul>
+</section>
+<section class="content"> 
+	<div class="clearfix welcome-container">
+		{if $do != 'ext' && $do != 'solution'}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="box box-default">
+	                <div class="box-header with-border">
+	                  <h3 class="box-title"><i class="fa fa-plane"></i> 快捷操作</h3>
+	                  <div class="box-tools pull-right">
+	                    <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+	                    <button data-widget="remove" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+	                  </div>
+	                </div><!-- /.box-header -->
+		            <div class="box-body">
+						<div class="shortcut clearfix">
+							<a href="{php echo url('platform/reply', array('m' => 'userapi'))}">
+								<i class="fa fa-sitemap"></i>
+								<span>自定义接口</span>
+							</a>
+							{loop $shortcuts $shortcut}
+								<a href="{$shortcut['link']}" title="{$shortcut['title']}">
+									<img src="{$shortcut['image']}" alt="{$shortcut['title']}" class="img-rounded" />
+									<span>{$shortcut['title']}</span>
+								</a>
+							{/loop}
+						</div>
+	                </div><!-- /.box-body -->
+	      		</div>
+			</div>
+		</div>
+		{/if}
 	{if $do == 'platform'}
 	{template 'home/welcome-platform'}
 	{/if}
@@ -38,5 +53,6 @@
 	{if $do == 'solution'}
 	{template 'home/welcome-solution'}
 	{/if}
-</div>
+	</div>
+</section>
 {template 'common/footer'}

@@ -1,13 +1,203 @@
-<div class="page-header">
-	<h4><i class="fa fa-android"></i> 会员统计情况</h4>
+<div class="row">
+	<div class="col-md-6">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title"><i class="fa fa-android"></i> 会员统计情况</h3>
+			</div>
+			<div class="box-body no-padding">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>公众号</th>
+							<th>会员数量</th>
+							<th ></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{$uniaccount['name']}</td>
+							<td>
+								<p>{$uniaccount['membernum']}</p>
+							</td>
+							<td> 
+								<a href="{php echo url('mc/member/display');}">查看</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title"><i class="fa fa-android"></i> 主公号粉丝统计情况</h3>
+			</div>
+			<div class="box-body no-padding">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>主公众号</th>
+							<th>粉丝数量</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{$uniaccount['name']}</td>
+							<td>
+								<p>{$uniaccount['fansnum']}</p>
+							</td>
+							<td> 
+								<a href="{php echo url('mc/fans/display');}">查看</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title"><i class="fa fa-android"></i> 子公号粉丝统计情况</h3>
+			</div>
+			<div class="box-body no-padding">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>子公众号</th>
+							<th>粉丝数量</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						{loop $accounts $acid $acc}
+						<tr>
+							<td>{$acc['name']}</td>
+							<td>
+								<p>{$acc['fansnum']}</p>
+							</td>
+							<td> 
+								<a href="{php echo url('mc/fans/display', array('acid'=>$acid));}">查看</a>
+							</td>
+						</tr>
+						{/loop}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title"><i class="fa fa-android"></i> 营销统计情况</h3>
+			</div>
+			<div class="box-body no-padding">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>营销方式</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>打折券</td>
+							<td>
+								{loop $coupons $row}
+								<p>{$row['title']}</p>
+								{/loop}
+							</td>
+							<td> 
+								{loop $coupons $row}
+									<p><a href="{php echo url('activity/coupon/post', array('id'=>$row['couponid']));}">查看</a></p>
+								{/loop}
+							</td>
+						</tr>
+					</tbody>
+					<tbody>
+						<tr>
+							<td>代金券</td>
+							<td>
+								{loop $tokens $row}
+								<p>{$row['title']}</p>
+								{/loop}
+							</td>
+							<td> 
+								{loop $tokens $row}
+									<p><a href="{php echo url('activity/coupon/post', array('id'=>$row['couponid']));}">查看</a></p>
+								{/loop}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="panel panel-default">
+
+
+			<div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Striped Full Width Table</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <table class="table table-striped">
+                    <tbody><tr>
+                      <th style="width: 10px">#</th>
+                      <th>Task</th>
+                      <th>Progress</th>
+                      <th style="width: 40px">Label</th>
+                    </tr>
+                    <tr>
+                      <td>1.</td>
+                      <td>Update software</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div style="width: 55%" class="progress-bar progress-bar-danger"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-red">55%</span></td>
+                    </tr>
+                    <tr>
+                      <td>2.</td>
+                      <td>Clean database</td>
+                      <td>
+                        <div class="progress progress-xs">
+                          <div style="width: 70%" class="progress-bar progress-bar-yellow"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-yellow">70%</span></td>
+                    </tr>
+                    <tr>
+                      <td>3.</td>
+                      <td>Cron job running</td>
+                      <td>
+                        <div class="progress progress-xs progress-striped active">
+                          <div style="width: 30%" class="progress-bar progress-bar-primary"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-light-blue">30%</span></td>
+                    </tr>
+                    <tr>
+                      <td>4.</td>
+                      <td>Fix and squish bugs</td>
+                      <td>
+                        <div class="progress progress-xs progress-striped active">
+                          <div style="width: 90%" class="progress-bar progress-bar-success"></div>
+                        </div>
+                      </td>
+                      <td><span class="badge bg-green">90%</span></td>
+                    </tr>
+                  </tbody></table>
+                </div><!-- /.box-body -->
+          	</div>
+
+
 	<div class="panel-body table-responsive">
-	<table class="table">
+	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th style="width:400px;">公众号</th>
-				<th style="width:400px;">会员数量</th>
+				<th>公众号</th>
+				<th>会员数量</th>
 				<th ></th>
 			</tr>
 		</thead>
@@ -23,15 +213,14 @@
 			</tr>
 		</tbody>
 	</table>
-	</div>
-</div>
+
 
 <div class="page-header">
 	<h4><i class="fa fa-android"></i> 主公号粉丝统计情况</h4>
 </div>
 <div class="panel panel-default">
 	<div class="panel-body table-responsive">
-	<table class="table">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th style="width:400px;">主公众号</th>
@@ -58,7 +247,7 @@
 </div>
 <div class="panel panel-default">
 	<div class="panel-body table-responsive">
-	<table class="table">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th style="width:400px;">子公众号</th>
@@ -88,7 +277,7 @@
 </div>
 <div class="panel panel-default">
 	<div class="panel-body table-responsive">
-	<table class="table">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th style="width:400px;">营销方式</th>
