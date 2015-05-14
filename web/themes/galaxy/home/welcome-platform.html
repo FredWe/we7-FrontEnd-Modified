@@ -67,119 +67,118 @@
 					</button>
 				</div>
 			</div>
-				<div class="box-body no-padding">
-					<div class="panel panel-default" style="padding:1em;">
-						<nav role="navigation" class="navbar navbar-default navbar-static-top" id="clear" style="margin: -1em -1em 1em -1em;">
-							<div class="container-fluid">
-								<div class="navbar-header">
-									<a href="javascript:;" class="navbar-brand">模块命中次数趋势图</a>
-								</div>
-								<ul class="nav navbar-nav nav-btns">
-									<li class="active" id="basic"><a href="javascript:;">文字回复</a></li>
-									<li id="news"><a href="javascript:;">图文回复</a></li>
-									<li id="music"><a href="javascript:;">音乐回复</a></li>
-									<li id="images"><a href="javascript:;">图片回复</a></li>
-									<li id="voice"><a href="javascript:;">语音回复</a></li>
-									<li id="video"><a href="javascript:;">视频回复</a></li>
-									<li id="userapi"><a href="javascript:;">自定义接口回复</a></li>
-									<li class="dropdown">
-										<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">其他模块 <span class="caret"></span></a>
-										<ul class="dropdown-menu" role="menu">
-										{loop $modules_other $other}
-											{if $modules[$other]['isrulefields']}
-												<li id="{$modules[$other]['name']}"><a href="javascript:;">{$modules[$other]['title']}</a></li>
-											{/if}
-										{/loop}
-										</ul>
-									</li>
-								</ul>
+			<div class="box-body no-padding">
+				<div class="panel panel-default" style="padding:1em;">
+					<nav role="navigation" class="navbar navbar-default navbar-static-top" id="clear" style="margin: -1em -1em 1em -1em;">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<a href="javascript:;" class="navbar-brand">模块命中次数趋势图</a>
 							</div>
-						</nav>
-						
-						<div class="account-stat">
-							<div class="account-stat-btn">
-								<div>总回复规则数<span id="rule"></span></div>
-								<div>今日命中次数<span id="today"></span></div>
-								<div>本月命中次数<span id="month"></span></div>
-								<div>
-									<a href="" id="show"  style="display:block; margin:5px 0;"><i class="fa fa-search"></i> 查看回复规则</a>
-									<a href="" id="add" style="display:block;"><i class="fa fa-plus"></i> 新增回复规则</a>
-								</div>
-							</div>
+							<ul class="nav navbar-nav nav-btns">
+								<li class="active" id="basic"><a href="javascript:;">文字回复</a></li>
+								<li id="news"><a href="javascript:;">图文回复</a></li>
+								<li id="music"><a href="javascript:;">音乐回复</a></li>
+								<li id="images"><a href="javascript:;">图片回复</a></li>
+								<li id="voice"><a href="javascript:;">语音回复</a></li>
+								<li id="video"><a href="javascript:;">视频回复</a></li>
+								<li id="userapi"><a href="javascript:;">自定义接口回复</a></li>
+								<li class="dropdown">
+									<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">其他模块 <span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+									{loop $modules_other $other}
+										{if $modules[$other]['isrulefields']}
+											<li id="{$modules[$other]['name']}"><a href="javascript:;">{$modules[$other]['title']}</a></li>
+										{/if}
+									{/loop}
+									</ul>
+								</li>
+							</ul>
 						</div>
-
-						<div style="margin-top:20px;">
-							<canvas id="myChart" height="80"></canvas>
+					</nav>
+					
+					<div class="account-stat">
+						<div class="account-stat-btn">
+							<div>总回复规则数<span id="rule"></span></div>
+							<div>今日命中次数<span id="today"></span></div>
+							<div>本月命中次数<span id="month"></span></div>
+							<div>
+								<a href="" id="show"  style="display:block; margin:5px 0;"><i class="fa fa-search"></i> 查看回复规则</a>
+								<a href="" id="add" style="display:block;"><i class="fa fa-plus"></i> 新增回复规则</a>
+							</div>
 						</div>
 					</div>
 
-					<script>
-						require(['chart', 'jquery'], function(c, $) {
-							$('.dropdown').click(function(){
-								$('.nav.nav-btns>li').removeClass('active');
-								$(this).toggleClass('active');
-							});
+					<div style="margin-top:20px;">
+						<canvas id="myChart" height="80"></canvas>
+					</div>
+				</div>
+
+				<script>
+					require(['chart', 'jquery'], function(c, $) {
+						$('.dropdown').click(function(){
+							$('.nav.nav-btns>li').removeClass('active');
+							$(this).toggleClass('active');
+						});
+						
+						var myLine = new Chart(document.getElementById("myChart").getContext("2d"));
+						var datasets = '';
+						var label = '';
+						var lineChartData = null;
+						var obj = null;
+						var day_num = "{php echo $day_num;}";
+						var show_url = "{php echo url('platform/reply/display')}m=";
+						var add_url = "{php echo url('platform/reply/post')}m=";
+						var data = null;
+						
+						$.post(location.href, {'m_name' : 'basic'}, function(data){
+							data = $.parseJSON(data);
 							
-							var myLine = new Chart(document.getElementById("myChart").getContext("2d"));
-							var datasets = '';
-							var label = '';
-							var lineChartData = null;
-							var obj = null;
-							var day_num = "{php echo $day_num;}";
-							var show_url = "{php echo url('platform/reply/display')}m=";
-							var add_url = "{php echo url('platform/reply/post')}m=";
-							var data = null;
+							$("#rule").html(data.stat.rule);
+							$("#today").html(data.stat.today);
+							$("#month").html(data.stat.month);
+							$('#show').attr('href', show_url + data.stat.m_name);
+							$('#add').attr('href', add_url + data.stat.m_name);
+
+							 lineChartData = {
+									labels : data.key,
+									datasets : [
+										{
+											fillColor : "rgba(36,165,222,0.1)",
+											strokeColor : "rgba(36,165,222,1)",
+											pointColor : "rgba(36,165,222,1)",
+											pointStrokeColor : "#fff",
+											pointHighlightFill : "#fff",
+											pointHighlightStroke : "rgba(36,165,222,1)",
+											data : data.value
+										}
+									]
+							}
+							 obj = myLine.Line(lineChartData, {responsive: true});
+						});
+						
+						$('.nav.nav-btns li[class!="dropdown"]').on('click', function(){
+							$('.nav.nav-btns li').removeClass('active');
+							$(this).toggleClass('active');
+							var m_name = $(this).attr('id');
 							
-							$.post(location.href, {'m_name' : 'basic'}, function(data){
+							$.post(location.href, {'m_name' : m_name}, function(data){
 								data = $.parseJSON(data);
 								
 								$("#rule").html(data.stat.rule);
 								$("#today").html(data.stat.today);
 								$("#month").html(data.stat.month);
+								
 								$('#show').attr('href', show_url + data.stat.m_name);
 								$('#add').attr('href', add_url + data.stat.m_name);
 
-								 lineChartData = {
-										labels : data.key,
-										datasets : [
-											{
-												fillColor : "rgba(36,165,222,0.1)",
-												strokeColor : "rgba(36,165,222,1)",
-												pointColor : "rgba(36,165,222,1)",
-												pointStrokeColor : "#fff",
-												pointHighlightFill : "#fff",
-												pointHighlightStroke : "rgba(36,165,222,1)",
-												data : data.value
-											}
-										]
-								}
-								 obj = myLine.Line(lineChartData, {responsive: true});
+				 				 for(var i = 0; i <= day_num; i++) {
+				 					obj.datasets[0].points[i].value = data.value[i];
+								 }
+				 				obj.update();
 							});
-							
-							$('.nav.nav-btns li[class!="dropdown"]').on('click', function(){
-								$('.nav.nav-btns li').removeClass('active');
-								$(this).toggleClass('active');
-								var m_name = $(this).attr('id');
-								
-								$.post(location.href, {'m_name' : m_name}, function(data){
-									data = $.parseJSON(data);
-									
-									$("#rule").html(data.stat.rule);
-									$("#today").html(data.stat.today);
-									$("#month").html(data.stat.month);
-									
-									$('#show').attr('href', show_url + data.stat.m_name);
-									$('#add').attr('href', add_url + data.stat.m_name);
-
-					 				 for(var i = 0; i <= day_num; i++) {
-					 					obj.datasets[0].points[i].value = data.value[i];
-									 }
-					 				obj.update();
-								});
-							});
-					 	});
-					</script>
-				</div>
+						});
+				 	});
+				</script>
 			</div>
 		</div>
 	</div>

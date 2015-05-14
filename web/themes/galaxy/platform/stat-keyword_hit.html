@@ -1,13 +1,18 @@
 {template 'common/header'}
+<section class="content">
 	<div class="clearfix">
 		<div class="stat">
 			<div class="stat-div">
 				{template 'platform/stat-keyword_search'}
-				<div class="sub-item panel panel-default" id="table-list">
-					<div class="panel-heading">
-						详细数据
-					</div>
-					<div class="sub-content panel-body table-responsive">
+				  <div class="box box-default">
+				    <div class="box-header with-border">
+				      <h3 class="box-title">详细数据</h3>
+				      <div class="box-tools pull-right">
+				        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+				        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+				      </div>
+				    </div><!-- /.box-header -->
+				    <div class="box-body table-responsive no-padding">
 						<table class="table table-hover">
 							<thead class="navbar-inner">
 								<tr>
@@ -40,12 +45,13 @@
 								{/loop}
 							</tbody>
 						</table>
-					</div>
-				</div>
-				{$pager}
+				    </div><!-- /.box-body -->
+				    {$pager}
+				  </div><!-- /.box -->
 			</div>
 		</div>
-	</div>
+	</div>	
+</section>
 
 <script>
 require(['bootstrap'],function($){

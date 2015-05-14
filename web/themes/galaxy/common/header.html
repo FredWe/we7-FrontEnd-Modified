@@ -59,9 +59,8 @@
 				</ul>
 		</div>
 	</header>
-	
 	{if defined('IN_MESSAGE')}
-	<div class="container-fluid">
+	<div class="content-wrapper">
 		<div class="jumbotron clearfix alert alert-{$label}">
 			<div class="row">
 				<div class="col-xs-12 col-sm-3 col-lg-2">
@@ -89,59 +88,55 @@
 				</div>
 	{else}
 	{php $frames = empty($frames) ? $GLOBALS['frames'] : $frames; _calc_current_frames($frames);}
-	{if !empty($frames)}
-	<aside class="main-sidebar">
-		<section class="sidebar">
-			<ul class="sidebar-menu">
-			{loop $frames $k $frame}
-				<li class="treeview active">
-					<a href="#frame-{$k}">
-						<i class="fa fa-link"></i>
-						<span>{$frame['title']}</span>
-						<i class="fa fa-angle-left pull-right"></i>
-					</a>
-					<ul class="treeview-menu menu-open" style="display: block;">
-						{loop $frame['items'] $link}
-							{if !empty($link['append'])}
-							<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">
-								<a class="pull-right" href="{$link['append']['url']}">{$link['append']['title']}</a>
-								<span>{$link['title']}</span>
-							</li>
-							{else}
-							<a class="list-group-item{$link['active']}" href="{$link['url']}">{$link['title']}</a>
-							{/if}
-						{/loop}
-					</ul>
-				</li>
-			{/loop}
-			</ul>
-		</section>
-	</aside>
-	<div class="content-wrapper" style="min-height: 511px;">
-		<div id="p0">
-			<div id="p1">
-					{if CRUMBS_NAV == 1}
-						{php global $module_types;global $module;global $ptr_title;}
-						<ol class="breadcrumb" style="padding:5px 0;">
-							<li><a href="{url 'home/welcome/ext'}"><i class="fa fa-cogs"></i> &nbsp; 扩展功能</a></li>
-							<li><a href="{url 'home/welcome/ext' array('m' => $module['name'])}">{$module_types[$module['type']]['title']}模块 - {$module['title']}</a></li>
-							<li class="active">{$ptr_title}</li>
-						</ol>
-					{elseif CRUMBS_NAV == 2}
-						{php global $module_types;global $module;global $ptr_title; global $site_urls; $m = $_GPC['m'];}
-						<ul class="nav nav-tabs">
-							<li><a href="{url 'platform/reply' array('m' => $m)}">管理{$module['title']}</a></li>
-							<li><a href="{url 'platform/reply/post' array('m' => $m)}"><i class="fa fa-plus"></i> 添加{$module['title']}</a></li>
-							{if !empty($site_urls)}
-								{loop $site_urls $site_url}
-									<li {if $_GPC['do'] == $site_url['do']} class="active"{/if}><a href="{$site_url['url']}"> {$site_url['title']}</a></li>
-								{/loop}
-							{/if}
+		{if !empty($frames)}
+		<aside class="main-sidebar">
+			<section class="sidebar">
+				<ul class="sidebar-menu">
+				{loop $frames $k $frame}
+					<li class="treeview active">
+						<a href="#frame-{$k}">
+							<i class="fa fa-link"></i>
+							<span>{$frame['title']}</span>
+							<i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul class="treeview-menu menu-open" style="display: block;">
+							{loop $frame['items'] $link}
+								{if !empty($link['append'])}
+								<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">
+									<a class="pull-right" href="{$link['append']['url']}">{$link['append']['title']}</a>
+									<span>{$link['title']}</span>
+								</li>
+								{else}
+								<a class="list-group-item{$link['active']}" href="{$link['url']}">{$link['title']}</a>
+								{/if}
+							{/loop}
 						</ul>
+					</li>
+				{/loop}
+				</ul>
+			</section>
+		</aside>
+		<div class="content-wrapper" style="min-height: 511px;">
+			{if CRUMBS_NAV == 1}
+				{php global $module_types;global $module;global $ptr_title;}
+				<ol class="breadcrumb" style="padding:5px 0;">
+					<li><a href="{url 'home/welcome/ext'}"><i class="fa fa-cogs"></i> &nbsp; 扩展功能</a></li>
+					<li><a href="{url 'home/welcome/ext' array('m' => $module['name'])}">{$module_types[$module['type']]['title']}模块 - {$module['title']}</a></li>
+					<li class="active">{$ptr_title}</li>
+				</ol>
+			{elseif CRUMBS_NAV == 2}
+				{php global $module_types;global $module;global $ptr_title; global $site_urls; $m = $_GPC['m'];}
+				<ul class="nav nav-tabs">
+					<li><a href="{url 'platform/reply' array('m' => $m)}">管理{$module['title']}</a></li>
+					<li><a href="{url 'platform/reply/post' array('m' => $m)}"><i class="fa fa-plus"></i> 添加{$module['title']}</a></li>
+					{if !empty($site_urls)}
+						{loop $site_urls $site_url}
+							<li {if $_GPC['do'] == $site_url['do']} class="active"{/if}><a href="{$site_url['url']}"> {$site_url['title']}</a></li>
+						{/loop}
 					{/if}
-	{else}
-	<div class="content-wrapper" style="min-height: 511px;">
-		<div id="p0">
-			<div id="p1">
-	{/if}
+				</ul>
+			{/if}
+		{else}
+		<div class="content-wrapper" style="min-height: 511px;">
+		{/if}
 	{/if}

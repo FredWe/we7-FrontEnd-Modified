@@ -1,0 +1,27 @@
+{if $do == 'list'}
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="{php echo url('platform/qr/list');}">管理二维码</a></li>
+		<li><a href="{php echo url('platform/qr/post');}">生成二维码</a></li>
+		<li><a href="{php echo url('platform/qr/display');}">扫描统计</a></li>
+	</ul>	
+</section>
+{/if}
+{if $do == 'post'}
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li><a href="{php echo url('platform/qr/list');}">管理二维码</a></li>
+		<li class="active"><a href="{php echo url('platform/qr/post');}">生成二维码</a></li>
+		<li><a href="{php echo url('platform/qr/display');}">扫描统计</a></li>
+	</ul>	
+</section>
+{/if}
+{if $do == 'display'}
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li><a href="{php echo url('platform/qr/list');}">管理二维码</a></li>
+		<li><a href="{php echo url('platform/qr/post');}">生成二维码</a></li>
+		<li class="active"><a href="{php echo url('platform/qr/display');}">扫描统计</a></li>
+	</ul>	
+</section>
+{/if}

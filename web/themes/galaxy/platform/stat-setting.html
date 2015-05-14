@@ -13,13 +13,18 @@
 		{/if}
 	});
 </script>
+<section class="content">
 	<div class="clearfix">
 		<form action="" method="post" class="form-horizontal form">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					统计分析 <span>设定公众号码统计分析的相关功能，这个设置是针对当前公众号的</span>
-				</div>
-				<div class="panel-body">
+			  <div class="box box-default">
+			    <div class="box-header with-border">
+			      统计分析 <span>设定公众号码统计分析的相关功能，这个设置是针对当前公众号的</span>
+			      <div class="box-tools pull-right">
+			        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+			        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+			      </div>
+			    </div><!-- /.box-header -->
+			    <div class="box-body">
 					<div class="form-group">
 						<label class="col-xs-12 col-sm-3 col-md-3 col-lg-2 control-label">开启历史消息记录</label>
 						<div class="col-sm-9 col-xs-12">
@@ -43,8 +48,8 @@
 							<div class="help-block">开启此项后，系统将记录系统中的规则的使用情况，并生成走势图。</div>
 						</div>
 					</div>
-				</div>
-			</div>
+			    </div><!-- /.box-body -->
+			  </div><!-- /.box -->
 			<div class="form-group">
 				<div class="col-sm-12">
 						<input name="submit" type="submit" value="提交" class="btn btn-primary col-lg-1" />
@@ -52,5 +57,6 @@
 				</div>
 			</div>
 		</form>
-	</div>
+	</div>	
+</section>
 {template 'common/footer'}

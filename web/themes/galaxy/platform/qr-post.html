@@ -1,9 +1,6 @@
 {template 'common/header'}
-	<ul class="nav nav-tabs">
-		<li><a href="{php echo url('platform/qr/list');}">管理二维码</a></li>
-		<li class="active"><a href="{php echo url('platform/qr/post');}">生成二维码</a></li>
-		<li><a href="{php echo url('platform/qr/display');}">扫描统计</a></li>
-	</ul>
+{template 'platform/qr-header'}
+<section class="content">
 	<div class="clearfix">
 		<form class="form-horizontal form" action="" method="post" id="form1">
 			<input type="hidden" name="id" value="{$row['id']}" />
@@ -71,7 +68,9 @@
 				</div>
 			</div>
 		</form>
-	</div>
+	</div>	
+</section>
+
 <script type="text/javascript">
 	require(['jquery', 'util'], function($, u){
 		$("#form1").submit(function(){

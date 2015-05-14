@@ -1,9 +1,6 @@
 {template 'common/header'}
-	<ul class="nav nav-tabs">
-		<li><a href="{php echo url('platform/qr/list');}">管理二维码</a></li>
-		<li><a href="{php echo url('platform/qr/post');}">生成二维码</a></li>
-		<li class="active"><a href="{php echo url('platform/qr/display');}">扫描统计</a></li>
-	</ul>
+{template 'platform/qr-header'}
+<section class="content">
 	<div class="panel panel-info">
 		<div class="panel-heading">筛选</div>
 		<div class="panel-body">
@@ -81,7 +78,9 @@
 			</table>
 			{$pager}
 		</div>
-	</div>
+	</div>	
+</section>
+
 <script type="text/javascript">
 	require(['bootstrap'],function($){
 		$('.btn').hover(function(){

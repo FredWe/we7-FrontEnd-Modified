@@ -1,40 +1,50 @@
 {template 'common/header'}
+<section class="content">
 	<div class="clearfix">
 	{template 'platform/stat-keyword_search'}
-		<h4 class="sub-title">详细数据</h4>
-		<form action="" method="post" onsubmit="">
-		<div class="table-responsive">
-			<table class="table table-hover">
-				<thead class="navbar-inner">
-					<tr>
-						<th style="width:150px;">关键字<i></i></th>
-						<th>规则<i></i></th>
-						<th style="width:160px;">模块<i></i></th>
-						<th style="width:100px;">操作</th>
-					</tr>
-				</thead>
-				<tbody>
-					{loop $list $row}
-					<tr>
-						<td>{$row['content']}</td>
-						<td class="row-hover">
-							{if empty($row['rid'])}
-								N/A
-							{else}
-								<a target="main" href="{$rules[$row['rid']]['url']}">{$rules[$row['rid']]['name']}</a>
-							{/if}
-						</td>
-						
-						<td>{if $rules[$row['rid']]['module']}{$rules[$row['rid']]['module']}{else}default{/if}</td>
-						<td>
-							<a target="main" href="{php echo url('platform/stat/trend', array('id' => $row['rid']))}" class="btn btn-default btn-sm" title="使用率走势"><i class="fa fa-bar-chart-o"></i></a>
-						</td>
-					</tr>
-					{/loop}
-				</tbody>
-			</table>
-		</div>
-		</form>
-		{$pager}
-	</div>
+	  <div class="box box-default">
+	    <div class="box-header with-border">
+	      <h3 class="box-title">详细数据</h3>
+	      <div class="box-tools pull-right">
+	        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+	        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+	      </div>
+	    </div><!-- /.box-header -->
+	    <div class="box-body table-responsive no-padding">
+			<form action="" method="post" onsubmit="">
+				<table class="table table-hover">
+					<thead class="navbar-inner">
+						<tr>
+							<th style="width:150px;">关键字<i></i></th>
+							<th>规则<i></i></th>
+							<th style="width:160px;">模块<i></i></th>
+							<th style="width:100px;">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						{loop $list $row}
+						<tr>
+							<td>{$row['content']}</td>
+							<td class="row-hover">
+								{if empty($row['rid'])}
+									N/A
+								{else}
+									<a target="main" href="{$rules[$row['rid']]['url']}">{$rules[$row['rid']]['name']}</a>
+								{/if}
+							</td>
+							
+							<td>{if $rules[$row['rid']]['module']}{$rules[$row['rid']]['module']}{else}default{/if}</td>
+							<td>
+								<a target="main" href="{php echo url('platform/stat/trend', array('id' => $row['rid']))}" class="btn btn-default btn-sm" title="使用率走势"><i class="fa fa-bar-chart-o"></i></a>
+							</td>
+						</tr>
+						{/loop}
+					</tbody>
+				</table>
+			</form>
+			{$pager}
+	    </div><!-- /.box-body -->
+	  </div><!-- /.box -->	
+	</div>	
+</section>
 {template 'common/footer'}
