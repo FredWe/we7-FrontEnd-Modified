@@ -25,6 +25,7 @@
 		{/if}
 	</ul>	
 </section>
+
 <section class="content">
 	{if $do == 'post'}
 	<form class="form-horizontal form" action="" method="post" enctype="multipart/form-data">
@@ -33,11 +34,11 @@
 		<input type="hidden" name="foo" value="post" />
 		<input type="hidden" name="do" value="{$_GPC['do']}" />
 		<input type="hidden" name="templateid" value="{$template['id']}">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				微站导航
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">微站导航</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 			{if $_GPC['do'] != 'profile'}
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">分配到微站</label>
@@ -108,11 +109,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				导航样式
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">导航样式</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">图标类型</label>
 					<div class="col-sm-9 col-xs-12">
@@ -289,9 +290,11 @@
 	</script>
 
 		{if $_GPC['do'] != 'profile'}
-			<div class="panel panel-info">
-				<div class="panel-heading">筛选</div>
-				<div class="panel-body">
+			<div class="box box-info">
+				<div class="box-header with-border">
+					<h3 class="box-title">筛选</h3>
+				</div>
+				<div class="box-body">
 					<form action="./index.php" method="get" class="form-horizontal" role="form" id="form1">
 						<input type="hidden" name="c" value="site" />
 						<input type="hidden" name="a" value="nav" />
@@ -321,32 +324,38 @@
 			</script>
 		{/if}
 		{if $_GPC['do'] == 'home'}
-		<div class="panel panel-warning">
-			<div class="panel-body">
+		<div class="box box-warning">
+			<div class="box-body">
 				当前使用的风格为：{$style['name']}，模板文件为：{$template['title']}（/app/themes/{$template['name']}）。{if !empty($template['sections'])}此模板提供 <span class="label label-warning">{$template['sections']}</span> 个导航位置，您可以指定导航在特定的位置显示，未指位置的导航将无法显示{else}此模板未提供导航位置功能{/if}
 			</div>
 		</div>
 		{/if}
 	<form action="" method="post">
 	<div class="clearfix">
-		<div class="stat panel panel-default">
+		<div class="stat box box-default">
 			{if $type['name'] == 'home'}
-			<div class="panel-heading">
-				选择要显示在微站首页的信息 <span class="text-muted">这里提供了{if $mod}"{$mod['title']}"功能中{/if}能够显示在微站首页的信息, 你可以选择性的自定义或显示隐藏</span>
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					选择要显示在微站首页的信息 <span class="text-muted">这里提供了{if $mod}"{$mod['title']}"功能中{/if}能够显示在微站首页的信息, 你可以选择性的自定义或显示隐藏</span>
+				</h3>
 			</div>
 			{/if}
 			{if $type['name'] == 'profile'}
-			<div class="panel-heading">
-				选择要显示在微站个人中心的信息 <span class="text-muted">这里提供了{if $mod}"{$mod['title']}"功能中{/if}能够显示在微站个人中心的信息, 你可以选择性的自定义或显示隐藏</span>
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					选择要显示在微站个人中心的信息 <span class="text-muted">这里提供了{if $mod}"{$mod['title']}"功能中{/if}能够显示在微站个人中心的信息, 你可以选择性的自定义或显示隐藏</span>
+				</h3>
 			</div>
 			{/if}
 			{if $type['name'] == 'shortcut'}
-			<div class="panel-heading">
-				选择要显示在微站快捷选项的信息 <span class="text-muted">这里提供了{if $mod}"{$mod['title']}"功能中{/if}能够显示在微站快捷选项的信息(需要微站模板支持), 你可以选择性的自定义或显示隐藏</span>
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					选择要显示在微站快捷选项的信息 <span class="text-muted">这里提供了{if $mod}"{$mod['title']}"功能中{/if}能够显示在微站快捷选项的信息(需要微站模板支持), 你可以选择性的自定义或显示隐藏</span>
+				</h3>
 			</div>
 			{/if}
 			
-			<div class="table-responsive panel-body">
+			<div class="table-responsive box-body">
 				<table class="table table-hover">
 					<thead class="navbar-inner">
 					<tr>
@@ -487,5 +496,4 @@
 	</form>
 	{/if}	
 </section>
-
 {template 'common/footer'}

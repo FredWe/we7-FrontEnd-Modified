@@ -1,9 +1,12 @@
 {template 'common/header'}
-<ul class="nav nav-tabs">
-	<li {if $do == 'display'}class="active"{/if}><a href="{php echo url('mc/group/display');}">会员组列表</a></li>
-	<li {if $do == 'post' && empty($groupid)}class="active"{/if}><a href="{php echo url('mc/group/post');}">添加会员组</a></li>
-	{if $do == 'post' && !empty($groupid)}<li class="active"><a href="{php echo url('mc/group/post', array('id' => $groupid));}">编辑会员组</a></li>{/if}
-</ul>
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li {if $do == 'display'}class="active"{/if}><a href="{php echo url('mc/group/display');}">会员组列表</a></li>
+		<li {if $do == 'post' && empty($groupid)}class="active"{/if}><a href="{php echo url('mc/group/post');}">添加会员组</a></li>
+		{if $do == 'post' && !empty($groupid)}<li class="active"><a href="{php echo url('mc/group/post', array('id' => $groupid));}">编辑会员组</a></li>{/if}
+	</ul>	
+</section>
+<section class="content">
 {if $do == 'display'}
 <script type="text/javascript">
 	require(['jquery', 'util'], function($, u){
@@ -25,8 +28,8 @@
 		});
 	});
 </script>
-<div class="panel panel-default">
-<div class="panel-body table-responsive">
+<div class="box box-default">
+<div class="box-body table-responsive">
 	<form action="" method="post" id="form1" >
 		<table class="table table-hover">
 			<thead class="navbar-inner">
@@ -86,13 +89,12 @@
 		});
 	});
 </script>
-<div class="main">
 	<form class="form-horizontal form" id="form2" action="" method="post">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				会员组参数
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">会员组参数</h3>				
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">组名称</label>
 					<div class="col-sm-8 col-xs-12">
@@ -112,6 +114,6 @@
 			<input type="submit" class="btn btn-primary col-lg-1" name="submit" value="提交" />
 		</div>
 	</form>
-</div>
 {/if}
+</section>
 {template 'common/footer'}

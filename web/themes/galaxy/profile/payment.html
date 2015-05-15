@@ -120,13 +120,13 @@
 		});
 	});
 </script>
-<div class="main">
+<section class="content">
 	<form id="payform" action="{php echo url('profile/payment')}" enctype="multipart/form-data" method="post" class="form-horizontal form" onsubmit="return validate();" ng-controller="paySetting">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				设置货到支付开关
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">设置货到支付开关</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">货到支付</label>
 					<div class="col-sm-8 col-xs-12">
@@ -143,11 +143,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				设置余额支付开关
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">设置余额支付开关</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">余额支付</label>
 					<div class="col-sm-8 col-xs-12">
@@ -164,11 +164,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				设置卡券使用开关
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">设置卡券使用开关</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">卡券使用开关</label>
 					<div class="col-sm-8 col-xs-12">
@@ -189,11 +189,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				设置支付宝支付开关
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">设置支付宝支付开关</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">支付宝无线支付</label>
 					<div class="col-sm-9 col-xs-12">
@@ -244,11 +244,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				设置微信支付开关
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">设置微信支付开关</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				{if !empty($accounts)}
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">微信支付</label>
@@ -374,11 +374,11 @@
 				{/if}
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				设置银联支付开关
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">设置银联支付开关</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">银联支付</label>
 					<div class="col-sm-8 col-xs-12">
@@ -418,11 +418,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				设置百付宝支付开关
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">设置百付宝支付开关</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">百付宝支付</label>
 					<div class="col-sm-8 col-xs-12">
@@ -459,6 +459,6 @@
 			<input name="do-submit" type="submit" value="提交" class="btn btn-primary col-lg-1" />
 			<input type="hidden" name="token" value="{$_W['token']}" />
 		</div>
-	</form>
-</div>
+	</form>	
+</section>
 {template 'common/footer'}

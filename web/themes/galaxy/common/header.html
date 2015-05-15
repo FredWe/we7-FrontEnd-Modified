@@ -1,35 +1,46 @@
 {template 'common/header-base'}
 <div class="wrapper">
 	<header class="main-header">
-		<div class="navbar navbar-inverse navbar-static-top" role="navigation" style="position:static;">
+		<!-- Logo -->
+		<a href=href="./?refresh" class="logo">
+		  <!-- mini logo for sidebar mini 50x50 pixels -->
+		  <span class="logo-mini"><i class="fa fa-reply-all"></i></span>
+		  <!-- logo for regular state and mobile devices -->
+		  <span class="logo-lg"><i class="fa fa-reply-all"></i>返回系统</span>
+		</a>
+		<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+				<!-- Sidebar toggle button-->
+				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+					<span class="sr-only">Toggle navigation</span>
+				</a>
 				{if defined('IN_SOLUTION')}
-				<ul class="nav navbar-nav">
-					{php global $solution,$solutions;}
-					{if $_W['role'] != 'operator'}
-					<li><a href="{url 'home/welcome/ext'}"><i class="fa fa-reply-all"></i>返回公众号功能管理</a></li>
-					{/if}
-					{loop $solutions $row}
-					<li{if $row['name'] == $solution['name']} class="active"{/if}><a href="{url 'home/welcome/solution' array('m' => $row['name'])}"><i class="fa fa-cog"></i>{$row['title']}</a></li>
-					{/loop}
-					{if IMS_FAMILY != 'x'}
-					<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
-					<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
-					{/if}
-				</ul>
+					<ul class="nav navbar-nav">
+						{php global $solution,$solutions;}
+						{if $_W['role'] != 'operator'}
+						<li><a href="{url 'home/welcome/ext'}"><i class="fa fa-reply-all"></i>返回公众号功能管理</a></li>
+						{/if}
+						{loop $solutions $row}
+						<li{if $row['name'] == $solution['name']} class="active"{/if}><a href="{url 'home/welcome/solution' array('m' => $row['name'])}"><i class="fa fa-cog"></i>{$row['title']}</a></li>
+						{/loop}
+						{if IMS_FAMILY != 'x'}
+						<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
+						<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
+						{/if}
+					</ul>
 				{else}
-				<ul class="nav navbar-nav">
-					<li><a href="./?refresh"><i class="fa fa-reply-all"></i>返回系统</a></li>
-					{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('platform', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'platform'} class="active"{/if}><a href="{url 'home/welcome/platform'}"><i class="fa fa-cog"></i>基础设置</a></li>{/if}
-					{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('site', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'site'} class="active"{/if}><a href="{url 'home/welcome/site'}"><i class="fa fa-life-bouy"></i>微站功能</a></li>{/if}
-					{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('mc', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'mc'} class="active"{/if}><a href="{url 'home/welcome/mc'}"><i class="fa fa-gift"></i>粉丝营销</a></li>{/if}
-					{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('setting', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'setting'} class="active"{/if}><a href="{url 'home/welcome/setting'}"><i class="fa fa-umbrella"></i>功能选项</a></li>{/if}
-					{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('ext', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'ext'} class="active"{/if}><a href="{url 'home/welcome/ext'}"><i class="fa fa-cubes"></i>扩展功能</a></li>{/if}
-					{if FRAME == 'solution'}<li class="active"><a href="{url 'home/welcome/solution' array('m' => $m)}"><i class="fa fa-comments"></i>行业功能 - {$solution['title']}</a></li>{/if}
-					{if IMS_FAMILY != 'x'}
-					<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
-					<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
-					{/if}
-				</ul>
+					<ul class="nav navbar-nav">
+						<li><a href="./?refresh"><i class="fa fa-reply-all"></i>返回系统</a></li>
+						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('platform', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'platform'} class="active"{/if}><a href="{url 'home/welcome/platform'}"><i class="fa fa-cog"></i>基础设置</a></li>{/if}
+						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('site', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'site'} class="active"{/if}><a href="{url 'home/welcome/site'}"><i class="fa fa-life-bouy"></i>微站功能</a></li>{/if}
+						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('mc', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'mc'} class="active"{/if}><a href="{url 'home/welcome/mc'}"><i class="fa fa-gift"></i>粉丝营销</a></li>{/if}
+						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('setting', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'setting'} class="active"{/if}><a href="{url 'home/welcome/setting'}"><i class="fa fa-umbrella"></i>功能选项</a></li>{/if}
+						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('ext', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'ext'} class="active"{/if}><a href="{url 'home/welcome/ext'}"><i class="fa fa-cubes"></i>扩展功能</a></li>{/if}
+						{if FRAME == 'solution'}<li class="active"><a href="{url 'home/welcome/solution' array('m' => $m)}"><i class="fa fa-comments"></i>行业功能 - {$solution['title']}</a></li>{/if}
+						{if IMS_FAMILY != 'x'}
+						<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
+						<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
+						{/if}
+					</ul>
 				{/if}
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -89,33 +100,75 @@
 	{else}
 	{php $frames = empty($frames) ? $GLOBALS['frames'] : $frames; _calc_current_frames($frames);}
 		{if !empty($frames)}
+		<!---->
 		<aside class="main-sidebar">
 			<section class="sidebar">
 				<ul class="sidebar-menu">
-				{loop $frames $k $frame}
-					<li class="treeview active">
-						<a href="#frame-{$k}">
-							<i class="fa fa-link"></i>
-							<span>{$frame['title']}</span>
-							<i class="fa fa-angle-left pull-right"></i>
+					<li class="header">MAIN NAVIGATION</li>
+					{loop $frames $k $frame}
+						<li class="treeview">
+							<a href="#frame-{$k}">
+								<i class="fa fa-link"></i>
+								<span>{$frame['title']}</span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								{loop $frame['items'] $link}
+									{if !empty($link['append'])}
+										<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">
+											<a class="pull-right" href="{$link['append']['url']}">{$link['append']['title']}</a>
+											<span>{$link['title']}</span>
+										</li>
+									{else}
+										<a class="list-group-item{$link['active']}" href="{$link['url']}">{$link['title']}</a>
+									{/if}
+								{/loop}
+							</ul>
+						</li>
+					{/loop}
+					<!--					
+					<li class="treeview">
+						<a href="#">
+							<i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
-						<ul class="treeview-menu menu-open" style="display: block;">
-							{loop $frame['items'] $link}
-								{if !empty($link['append'])}
-								<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">
-									<a class="pull-right" href="{$link['append']['url']}">{$link['append']['title']}</a>
-									<span>{$link['title']}</span>
-								</li>
-								{else}
-								<a class="list-group-item{$link['active']}" href="{$link['url']}">{$link['title']}</a>
-								{/if}
-							{/loop}
+						<ul class="treeview-menu">
+							<li><a href="#">Link in level 2</a></li>
+							<li><a href="#">Link in level 2</a></li>
 						</ul>
 					</li>
-				{/loop}
+					-->
+				</ul>
+		</aside>
+		<!---->
+		<!--
+		<aside class="main-sidebar">
+			<section class="sidebar">
+				<ul class="sidebar-menu">
+					{loop $frames $k $frame}
+						<li class="treeview">
+							<a href="#frame-{$k}">
+								<i class="fa fa-link"></i>
+								<span>{$frame['title']}</span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu" style="display: block;">
+								{loop $frame['items'] $link}
+									{if !empty($link['append'])}
+										<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">
+											<a class="pull-right" href="{$link['append']['url']}">{$link['append']['title']}</a>
+											<span>{$link['title']}</span>
+										</li>
+									{else}
+										<a class="list-group-item{$link['active']}" href="{$link['url']}">{$link['title']}</a>
+									{/if}
+								{/loop}
+							</ul>
+						</li>
+					{/loop}
 				</ul>
 			</section>
 		</aside>
+		-->
 		<div class="content-wrapper" style="min-height: 511px;">
 			{if CRUMBS_NAV == 1}
 				{php global $module_types;global $module;global $ptr_title;}

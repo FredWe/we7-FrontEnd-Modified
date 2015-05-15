@@ -1,10 +1,12 @@
 {template 'common/header'}
-<ul class="nav nav-tabs">
-	<li {if $do == 'display'}class="active"{/if}><a href="{php echo url('activity/token/display', array());}">管理代金券</a></li>
-	<li {if $do == 'post' && !$couponid}class="active"{/if}><a href="{php echo url('activity/token/post', array());}">添加代金券</a></li>
-	{if $do == 'post' &&  $couponid}<li class="active"><a href="{php echo url('activity/token/post', array('id' => $couponid));}">编辑代金券</a></li>{/if}
-	<li {if $do == 'record'}class="active"{/if}><a href="{php echo url('activity/token/record', array('id' => $couponid));}">代金券兑换记录</a></li>
-</ul>
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li {if $do == 'display'}class="active"{/if}><a href="{php echo url('activity/token/display', array());}">管理代金券</a></li>
+		<li {if $do == 'post' && !$couponid}class="active"{/if}><a href="{php echo url('activity/token/post', array());}">添加代金券</a></li>
+		{if $do == 'post' &&  $couponid}<li class="active"><a href="{php echo url('activity/token/post', array('id' => $couponid));}">编辑代金券</a></li>{/if}
+		<li {if $do == 'record'}class="active"{/if}><a href="{php echo url('activity/token/record', array('id' => $couponid));}">代金券兑换记录</a></li>
+	</ul>	
+</section>
 <script>
 	require(['bootstrap'],function($){
 		$('.btn').hover(function(){
@@ -14,17 +16,18 @@
 		});
 	});
 </script>
+
+<section class="content">
 {if $do == 'post'}
 <style>
 	.text-danger{color:red}
 </style>
-<div class="main">
 	<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
-		<div class="panel panel-default" id="step1">
-			<div class="panel-heading">
-				代金券
+		<div class="box box-default" id="step1">
+			<div class="box-header with-border">
+				<h3 class="box-title">代金券</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label"><span class="text-danger"></span> 可用模块</label>
 					<div class="col-sm-9 col-xs-12">
@@ -90,11 +93,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel panel-default" id="step2" style="display:none">
-			<div class="panel-heading">
-				代金券
+		<div class="box box-default" id="step2" style="display:none">
+			<div class="box-header with-border">
+				<h3 class="box-title">代金券</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label"><span class="text-danger">*</span> 积分类型</label>
 					<div class="col-sm-9 col-xs-12">
@@ -147,7 +150,6 @@
 	<div id="footer-location"  class="hide">
 		<span name="submit" id="submit" class="pull-right btn btn-primary">保存</span>
 	</div>
-</div>
 <script type="text/javascript">
 	var editor;
 	require(['jquery','util'],function($, u){
@@ -280,46 +282,47 @@
 	});
 </script>
 {elseif $do == 'display'}
-<div class="main">
-	<div class="panel panel-info">
-	<div class="panel-heading">筛选</div>
-	<div class="panel-body">
-		<form action="./index.php" method="get" class="form-horizontal" role="form">
-		<input type="hidden" name="c" value="activity" />
-		<input type="hidden" name="a" value="token" />
-			<div class="form-group">
-				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">关键字</label>
-				<div class="col-sm-7 col-lg-9 col-xs-12">
-					<input class="form-control" name="keyword" id="" type="text" value="{$_GPC['keyword']}">
+	<div class="box box-info">
+		<div class="box-header with-border">
+			<h3 class="box-title">筛选</h3>
+		</div>
+		<div class="box-body">
+			<form action="./index.php" method="get" class="form-horizontal" role="form">
+			<input type="hidden" name="c" value="activity" />
+			<input type="hidden" name="a" value="token" />
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">关键字</label>
+					<div class="col-sm-7 col-lg-9 col-xs-12">
+						<input class="form-control" name="keyword" id="" type="text" value="{$_GPC['keyword']}">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">序列号</label>
-				<div class="col-sm-7 col-lg-9 col-xs-12">
-					<input class="form-control" name="couponsn" id="" type="text" value="{$_GPC['couponsn']}">
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">序列号</label>
+					<div class="col-sm-7 col-lg-9 col-xs-12">
+						<input class="form-control" name="couponsn" id="" type="text" value="{$_GPC['couponsn']}">
+					</div>
 				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">会员组</label>
-				<div class="col-sm-7 col-lg-9 col-xs-12">
-					<select name="groupid" class="form-control">
-						<option value="0">不限</option>
-						{loop $groupall $li}
-							<option {if $_GPC['groupid'] == $li['groupid']}selected{/if} value="{$li['groupid']}">{$li['title']}</option>
-						{/loop}
-					</select>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">会员组</label>
+					<div class="col-sm-7 col-lg-9 col-xs-12">
+						<select name="groupid" class="form-control">
+							<option value="0">不限</option>
+							{loop $groupall $li}
+								<option {if $_GPC['groupid'] == $li['groupid']}selected{/if} value="{$li['groupid']}">{$li['title']}</option>
+							{/loop}
+						</select>
+					</div>
+					<div class="pull-right col-xs-12 col-sm-3 col-lg-2">
+						<button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+					</div>
 				</div>
-				<div class="pull-right col-xs-12 col-sm-3 col-lg-2">
-					<button class="btn btn-default"><i class="fa fa-search"></i> 搜索</button>
+				<div class="form-group">
 				</div>
-			</div>
-			<div class="form-group">
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
-</div>
-<div class="panel panel-default">
-	<div class="panel-body table-responsive">
+<div class="box box-default">
+	<div class="box-body table-responsive">
 		<table class="table table-hover">
 			<thead class="navbar-inner">
 			<tr>
@@ -361,12 +364,12 @@
 	</div>
 </div>
 {$pager}
-</div>
 {elseif $do == 'record'}
-<div class="main">
-	<div class="panel panel-info">
-		<div class="panel-heading">筛选</div>
-		<div class="panel-body">
+	<div class="box box-info">
+		<div class="box-header with-border">
+			<h3 class="box-title">筛选</h3>
+		</div>
+		<div class="box-body">
 			<form action="./index.php" method="get" class="form-horizontal" role="form">
 			<input type="hidden" name="c" value="activity">
 			<input type="hidden" name="a" value="token">
@@ -411,64 +414,62 @@
 			</form>
 		</div>
 	</div>
-	<div class="panel panel-default">
-	<div class="table-responsive panel-body">
-		<table class="table table-hover">
-			<thead class="navbar-inner">
-				<tr>
-					<th style="width:80px; text-align:center;">用户ID</th>
-					<th style="width:80px; text-align:center;">标题</th>
-					<th style="width:80px; text-align:center;">图标</th>
-					<th style="width:100px; text-align:center;">面额</th>
-					<th style="width:150px; text-align:center;">兑换时间</th>
-					<th style="width:150px; text-align:center;">代金券状态</th>
-					<th style="width:100px; text-align:center;">操作者</th>
-					<th style="width:150px; text-align:center;">使用时间</th>
-					<th style="width:80px; text-align:center;">操作</th>
-				</tr>
-			</thead>
-			<tbody>
-				{loop $list $item}
-				<tr>
-					<td class="text-center">{$item['uid']}</td>
-					<td class="text-center">{$item['title']}</td>
-					<td class="text-center"><img src="{$item['thumb']}" style="max-width:50px; max-height: 30px;"></td>
-					<td class="text-center">{$item['discount']}</td>
-					<td class="text-center">{php echo date('Y-m-d H:i', $item['granttime'])}</td>
-					<td class="text-center">
-						{if $item['status'] == 1}
-							<span class="label label-success">未使用</span>
-						{else}
-							<span class="label label-danger">已使用</span>
-						{/if}
-					</td>
-					<td>
-						{if $item['status'] == 1}
-							<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#tabused" data-cid="{$item['couponid']}" data-rid="{$item['recid']}"
-							data-uid="{$item['uid']}" onclick="$('#couponid').val($(this).attr('data-cid'));$('#uid').val($(this).attr('data-uid'));$('#recid').val($(this).attr('data-rid'))">标记为使用</button>
-						{else}
-							{$item['operator']}
-						{/if}
-					</td>
-					<td class="text-center">
-						{if $item['status'] == 1}
-							
-						{else}
-							{php echo date('Y-m-d H:i', $item['usetime'])}
-						{/if}
-					</td>
-					<td class="text-center">
-						<a onclick="if(!confirm('删除后不可恢复,您确定删除吗?')) return false;"  href="{php echo url('activity/coupon/record-del', array('id' => $item['recid']))}" class="btn btn-default btn-sm" title="删除兑换记录"><i class="fa fa-times"></i></a>
-					</td>
-				</tr>
-				{/loop}
-			</tbody>
-		</table>
-	</div>
+	<div class="box box-default">
+		<div class="table-responsive box-body">
+			<table class="table table-hover">
+				<thead class="navbar-inner">
+					<tr>
+						<th style="width:80px; text-align:center;">用户ID</th>
+						<th style="width:80px; text-align:center;">标题</th>
+						<th style="width:80px; text-align:center;">图标</th>
+						<th style="width:100px; text-align:center;">面额</th>
+						<th style="width:150px; text-align:center;">兑换时间</th>
+						<th style="width:150px; text-align:center;">代金券状态</th>
+						<th style="width:100px; text-align:center;">操作者</th>
+						<th style="width:150px; text-align:center;">使用时间</th>
+						<th style="width:80px; text-align:center;">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					{loop $list $item}
+					<tr>
+						<td class="text-center">{$item['uid']}</td>
+						<td class="text-center">{$item['title']}</td>
+						<td class="text-center"><img src="{$item['thumb']}" style="max-width:50px; max-height: 30px;"></td>
+						<td class="text-center">{$item['discount']}</td>
+						<td class="text-center">{php echo date('Y-m-d H:i', $item['granttime'])}</td>
+						<td class="text-center">
+							{if $item['status'] == 1}
+								<span class="label label-success">未使用</span>
+							{else}
+								<span class="label label-danger">已使用</span>
+							{/if}
+						</td>
+						<td>
+							{if $item['status'] == 1}
+								<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#tabused" data-cid="{$item['couponid']}" data-rid="{$item['recid']}"
+								data-uid="{$item['uid']}" onclick="$('#couponid').val($(this).attr('data-cid'));$('#uid').val($(this).attr('data-uid'));$('#recid').val($(this).attr('data-rid'))">标记为使用</button>
+							{else}
+								{$item['operator']}
+							{/if}
+						</td>
+						<td class="text-center">
+							{if $item['status'] == 1}
+								
+							{else}
+								{php echo date('Y-m-d H:i', $item['usetime'])}
+							{/if}
+						</td>
+						<td class="text-center">
+							<a onclick="if(!confirm('删除后不可恢复,您确定删除吗?')) return false;"  href="{php echo url('activity/coupon/record-del', array('id' => $item['recid']))}" class="btn btn-default btn-sm" title="删除兑换记录"><i class="fa fa-times"></i></a>
+						</td>
+					</tr>
+					{/loop}
+				</tbody>
+			</table>
+		</div>
 	</div>
 	{$pager}
-</div>
-
 <!-- 代金券标记已使用模态层 -->
 <div class="modal fade" id="tabused" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -494,6 +495,6 @@
 		</div>
 	</div>
 </div>
-
 {/if}
+</section>
 {template 'common/footer'}

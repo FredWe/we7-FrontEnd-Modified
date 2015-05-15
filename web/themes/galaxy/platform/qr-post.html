@@ -5,11 +5,11 @@
 		<form class="form-horizontal form" action="" method="post" id="form1">
 			<input type="hidden" name="id" value="{$row['id']}" />
 			<input type="hidden" name="acid" value="{$row['acid']}" />
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					生成二维码
+			<div class="box box-default">
+				<div class="box-header with-border">
+					<h3 class="box-title">生成二维码</h3>
 				</div>
-				<div class="panel-body">
+				<div class="box-body">
 					<div class="form-group">
 						<label class="col-xs-12 col-sm-3 col-md-2 control-label">公众号</label>
 						{if !empty($row['id'])}

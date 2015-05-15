@@ -53,8 +53,8 @@
 
 		<div>
 			{loop $replies $row}
-			<div class="panel panel-default">
-				<div class="panel-heading clearfix">
+			<div class="box box-default">
+				<div class="box-header with-border clearfix">
 					{$row['name']}
 					<span class="pull-right">
 						{if $row['displayorder'] > 0}
@@ -67,13 +67,13 @@
 						{if $row['status'] == '0'}<span class="label label-danger">已禁用</span>{/if}
 					</span>
 				</div>
-				<div class="panel-body">
+				<div class="box-body">
 					{loop $row['keywords'] $kw}
 					<span class="label label-default" data-toggle="tooltip" data-placement="top" title="{if $kw['type']==1}等于{elseif $kw['type']==2}包含{elseif $kw['type']==3}正则{/if}">{$kw['content']}</span>&nbsp;
 					{if $kw['type'] == 4}<span class="label label-info" data-toggle="tooltip" data-placement="top" title="托管">优先级在{$row['displayorder']}之下直接生效</span>{/if}
 					{/loop}
 				</div>
-				<div class="panel-footer clearfix">
+				<div class="box-footer clearfix">
 					<div class="btn-group pull-right">
 						<a class="btn btn-default btn-sm" href="{php echo url('platform/reply/post', array('m' => $m, 'rid' => $row['id']))}"><i class="fa fa-edit"></i> 编辑</a>
 						<a class="btn btn-default btn-sm" href="{php echo url('platform/reply/delete', array('m' => $m, 'rid' => $row['id']))}" onclick="return confirm('删除规则将同时删除关键字与回复，确认吗？');return false;"><i class="fa fa-times"></i> 删除</a>

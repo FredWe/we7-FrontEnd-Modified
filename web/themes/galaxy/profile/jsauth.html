@@ -1,6 +1,5 @@
 {template 'common/header'}
-
-<div class="main">
+<section class="content">
 	<form id="form1"  action="{php echo url('profile/jsauth')}" method="post" class="form-horizontal form">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -28,7 +27,6 @@
 			<input type="hidden" name="token" value="{$_W['token']}" />
 		</div>
 		{/if}
-	</form>
-</div>
-
+	</form>	
+</section>
 {template 'common/footer'}

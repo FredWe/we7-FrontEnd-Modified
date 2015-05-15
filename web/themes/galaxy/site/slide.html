@@ -1,11 +1,13 @@
 {template 'common/header'}
-<ul class="nav nav-tabs">
-	<li {if $do == 'display'}class="active"{/if}><a href="{php echo url('site/slide/display', array('mtid' => $_GPC['mtid'], 'f' => $_GPC['f']));}">管理</a></li>
-	<li {if $do == 'post' && empty($id)}class="active"{/if}><a href="{php echo url('site/slide/post', array('mtid' => $_GPC['mtid'], 'f' => $_GPC['f']));}">添加</a></li>
-	{if $do == 'post' && $id}
-	<li {if $do == 'post' && !empty($id)}class="active"{/if}><a href="{php echo url('site/slide/post', array('id'=>$id, 'mtid' => $_GPC['mtid'], 'f' => $_GPC['f']));}">编辑</a></li>
-	{/if}
-</ul>
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li {if $do == 'display'}class="active"{/if}><a href="{php echo url('site/slide/display', array('mtid' => $_GPC['mtid'], 'f' => $_GPC['f']));}">管理</a></li>
+		<li {if $do == 'post' && empty($id)}class="active"{/if}><a href="{php echo url('site/slide/post', array('mtid' => $_GPC['mtid'], 'f' => $_GPC['f']));}">添加</a></li>
+		{if $do == 'post' && $id}
+		<li {if $do == 'post' && !empty($id)}class="active"{/if}><a href="{php echo url('site/slide/post', array('id'=>$id, 'mtid' => $_GPC['mtid'], 'f' => $_GPC['f']));}">编辑</a></li>
+		{/if}
+	</ul>	
+</section>
 <style>
 .table td span{display:inline-block;margin-top:4px;}
 .table td input{margin-bottom:0;}
@@ -20,10 +22,12 @@
 		});
 	});
 </script>
-<div class="main">
-	<div class="panel panel-info">
-		<div class="panel-heading">筛选</div>
-		<div class="panel-body">
+<section class="content">
+	<div class="box box-info">
+		<div class="box-header with-border">
+			<h3 class="box-title">筛选</h3>
+		</div>
+		<div class="box-body">
 			<form action="./index.php" method="get" class="form-horizontal" role="form">
 			<input type="hidden" name="c" value="site">
 			<input type="hidden" name="a" value="slide">
@@ -52,8 +56,8 @@
 		</div>
 	</div>
 	<form class="form-horizontal" action="" method="post">
-		<div class="panel panel-default">
-			<div class="panel-body table-responsive">
+		<div class="box box-default">
+			<div class="box-body table-responsive">
 				<table class="table table-hover">
 					<thead class="navbar-inner">
 					<tr>
@@ -87,21 +91,21 @@
 		</div>
 		{$pager}
 	</form>
-</div>
+</section>
 <script type="text/javascript">
 <!--
 	var category = {php echo json_encode($children)};
 //-->
 </script>
 {elseif $do == 'post'}
-<div class="main">
+<section class="content">
 	<form class="form-horizontal form" action="" method="post" enctype="multipart/form-data" onsubmit="return formcheck(this)">
 		<input type="hidden" name="id" value="{$item[id]}">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				幻灯片管理
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">幻灯片管理</h3>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-2 col-md-2 col-lg-1 control-label">分配到微站</label>
 					<div class="col-sm-10 col-xs-12">
@@ -144,7 +148,7 @@
 			<input type="hidden" name="token" value="{$_W['token']}" />
 		</div>
 	</form>
-</div>
+</section>
 <script type="text/javascript">
 <!--
 	var category = {php echo json_encode($children)};

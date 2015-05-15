@@ -8,133 +8,137 @@
 	.item-show .reply-news-list-detail .help-block{margin:5px 0}
 	.require{color:red;}
 </style>
-<ul class="nav nav-tabs">
-	<li class="active"><a href="{php echo url('mc/mass')}"> 微信群发</a></li>
-	<li><a href="{php echo url('mc/mass/send')}"> 已发送</a></li>
-</ul>
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="{php echo url('mc/mass')}"> 微信群发</a></li>
+		<li><a href="{php echo url('mc/mass/send')}"> 已发送</a></li>
+	</ul>	
+</section>
 
-<div class="clearfix">
-	<div class="alert alert-danger" style="margin-bottom:10px">
-		使用微信群发,首先确定您的公众号为"认证服务号"或"认证订阅号"。确定后,在 <a href="{php echo url('mc/fangroup')}">粉丝分组</a> 拉取您的粉丝分组。
-	</div>
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			批量发送通知
+<section class="content">
+	<div class="clearfix">
+		<div class="alert alert-danger" style="margin-bottom:10px">
+			使用微信群发,首先确定您的公众号为"认证服务号"或"认证订阅号"。确定后,在 <a href="{php echo url('mc/fangroup')}">粉丝分组</a> 拉取您的粉丝分组。
 		</div>
-		<div class="panel-body">
-			<form action=""  class="form-horizontal" role="form" id="form0">
-				<input type="hidden" name="fansnum" value="">
-				<input type="hidden" name="groupname" value="">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">选择公众号</label>
-					<div class="col-sm-9 col-xs-12">
-						<select name="acid" id="acid" class="form-control">
-							<option value="0" name="acid">请选择公众号</option>
-							{loop $accdata $accda}
-							<option value="{$accda['acid']}" name="acid">{$accda['name']}</option>
-							{/loop}
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">选择粉丝分组</label>
-					<div class="col-sm-9 col-xs-12">
-						<select name="groupid" id="groupid" class="form-control">
-							<option value="0" name="groupid">请选择粉丝分组</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息类型</label>
-					<div class="col-sm-9 col-xs-12">
-						<label class="radio-inline"><input type="radio" value="7" name="msgtype" checked>文本</label>
-						<label class="radio-inline"><input type="radio" value="2" name="msgtype">图片</label>
-						<label class="radio-inline"><input type="radio" value="3" name="msgtype">语音</label>
-						<label class="radio-inline"><input type="radio" value="4" name="msgtype">视频</label>
-						<label class="radio-inline"><input type="radio" value="6" name="msgtype">图文</label>
-					</div>
-				</div>
-			</form>
-			<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form7">
-				<input type="hidden" name="msgtype" value="text">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息内容</label>
-					<div class="col-sm-9 col-xs-12">
-						<textarea name="content" id="contentinput" class="form-control" style="width:500px" cols="20" rows="3" placeholder="添加要回复的内容"></textarea>
-						<div class="help-block">设置用户添加公众帐号好友时，发送的欢迎信息。<a href="javascript:;" id="content"><i class="fa fa-github-alt"></i> 表情</a></div>
-					</div>
-				</div>
-			</form>
-			<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form2" style="display:none;">
-				<input type="hidden" name="msgtype" value="image">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">上传图片</label>
-					<div class="col-sm-9 col-xs-12">
-						{php echo tpl_form_field_image('media_id', '', '', array('tabs'=>array('remote'=>'active')));}
-						<span class="help-block">请上传所要回复的图片，上传图片必须是JPG类型</span>
-					</div>
-				</div>
-			</form>
-			<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form3" style="display:none;">
-				<input type="hidden" name="msgtype" value="voice">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">上传语音</label>
-					<div class="col-sm-9 col-xs-12">
-						{php echo tpl_form_field_audio('media_id', '', array('tabs'=>array('remote'=>'active')));}
-						<span class="help-block">请上传所要回复的语音，上传语音必须是MP3类型</span>
-					</div>
-				</div>
-			</form>
-			<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form4" style="display:none;">
-				<input type="hidden" name="msgtype" value="mpvideo">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">视频标题</label>
-					<div class="col-sm-9 col-xs-12">
-						<input type="text" class="form-control" placeholder="添加视频消息的标题" name="title" value="">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">上传视频</label>
-					<div class="col-sm-9 col-xs-12">
-						{php echo tpl_form_field_audio('media_id', '', array('tabs'=>array('remote'=>'active')));}
-						<span class="help-block">请上传所要回复的视频，上传视频必须是MP4类型</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">描述</label>
-					<div class="col-sm-9 col-xs-12">
-						<textarea style="height:80px;" class="form-control" cols="70" name="description" placeholder="添加视频消息的简短描述" ></textarea>
-						<span class="help-block">描述内容将出现在视频名称下方，建议控制在20个汉字以内最佳</span>
-					</div>
-				</div>
-			</form>
-			<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form6" style="display:none">
-				<input type="hidden" name="msgtype" value="mpnews">
-				<div class="form-group">
-					<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息内容</label>
-					<div class="col-sm-9 col-xs-12" id="new-reply" style="margin-left:-15px">
-						<div class="row">
-
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">批量发送通知</h3>
+			</div>
+			<div class="box-body">
+				<form action=""  class="form-horizontal" role="form" id="form0">
+					<input type="hidden" name="fansnum" value="">
+					<input type="hidden" name="groupname" value="">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">选择公众号</label>
+						<div class="col-sm-9 col-xs-12">
+							<select name="acid" id="acid" class="form-control">
+								<option value="0" name="acid">请选择公众号</option>
+								{loop $accdata $accda}
+								<option value="{$accda['acid']}" name="acid">{$accda['name']}</option>
+								{/loop}
+							</select>
 						</div>
-						<div class="col-sm-12">
-							<div class="alert" style="text-align:center;">
-								<a href="javascript:;" class="btn btn-default" onclick="newsHandler.buildForm();"><i class="fa fa-plus"></i> 添加回复条目</a>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">选择粉丝分组</label>
+						<div class="col-sm-9 col-xs-12">
+							<select name="groupid" id="groupid" class="form-control">
+								<option value="0" name="groupid">请选择粉丝分组</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息类型</label>
+						<div class="col-sm-9 col-xs-12">
+							<label class="radio-inline"><input type="radio" value="7" name="msgtype" checked>文本</label>
+							<label class="radio-inline"><input type="radio" value="2" name="msgtype">图片</label>
+							<label class="radio-inline"><input type="radio" value="3" name="msgtype">语音</label>
+							<label class="radio-inline"><input type="radio" value="4" name="msgtype">视频</label>
+							<label class="radio-inline"><input type="radio" value="6" name="msgtype">图文</label>
+						</div>
+					</div>
+				</form>
+				<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form7">
+					<input type="hidden" name="msgtype" value="text">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息内容</label>
+						<div class="col-sm-9 col-xs-12">
+							<textarea name="content" id="contentinput" class="form-control" style="width:500px" cols="20" rows="3" placeholder="添加要回复的内容"></textarea>
+							<div class="help-block">设置用户添加公众帐号好友时，发送的欢迎信息。<a href="javascript:;" id="content"><i class="fa fa-github-alt"></i> 表情</a></div>
+						</div>
+					</div>
+				</form>
+				<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form2" style="display:none;">
+					<input type="hidden" name="msgtype" value="image">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">上传图片</label>
+						<div class="col-sm-9 col-xs-12">
+							{php echo tpl_form_field_image('media_id', '', '', array('tabs'=>array('remote'=>'active')));}
+							<span class="help-block">请上传所要回复的图片，上传图片必须是JPG类型</span>
+						</div>
+					</div>
+				</form>
+				<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form3" style="display:none;">
+					<input type="hidden" name="msgtype" value="voice">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">上传语音</label>
+						<div class="col-sm-9 col-xs-12">
+							{php echo tpl_form_field_audio('media_id', '', array('tabs'=>array('remote'=>'active')));}
+							<span class="help-block">请上传所要回复的语音，上传语音必须是MP3类型</span>
+						</div>
+					</div>
+				</form>
+				<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form4" style="display:none;">
+					<input type="hidden" name="msgtype" value="mpvideo">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">视频标题</label>
+						<div class="col-sm-9 col-xs-12">
+							<input type="text" class="form-control" placeholder="添加视频消息的标题" name="title" value="">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">上传视频</label>
+						<div class="col-sm-9 col-xs-12">
+							{php echo tpl_form_field_audio('media_id', '', array('tabs'=>array('remote'=>'active')));}
+							<span class="help-block">请上传所要回复的视频，上传视频必须是MP4类型</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">描述</label>
+						<div class="col-sm-9 col-xs-12">
+							<textarea style="height:80px;" class="form-control" cols="70" name="description" placeholder="添加视频消息的简短描述" ></textarea>
+							<span class="help-block">描述内容将出现在视频名称下方，建议控制在20个汉字以内最佳</span>
+						</div>
+					</div>
+				</form>
+				<form action="{php echo url('mc/notice/post')}" method="post" class="form-horizontal reply" role="form" id="form6" style="display:none">
+					<input type="hidden" name="msgtype" value="mpnews">
+					<div class="form-group">
+						<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息内容</label>
+						<div class="col-sm-9 col-xs-12" id="new-reply" style="margin-left:-15px">
+							<div class="row">
+
+							</div>
+							<div class="col-sm-12">
+								<div class="alert" style="text-align:center;">
+									<a href="javascript:;" class="btn btn-default" onclick="newsHandler.buildForm();"><i class="fa fa-plus"></i> 添加回复条目</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
 
-			<div class="form-group">
-				<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
-				<div class="col-sm-10">
-					<input type="submit" class="btn btn-primary span3" name="submit" value="立即发送" id="submit"/>
-					<input type="hidden" name="token" value="{$_W['token']}" />
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label"></label>
+					<div class="col-sm-10">
+						<input type="submit" class="btn btn-primary span3" name="submit" value="立即发送" id="submit"/>
+						<input type="hidden" name="token" value="{$_W['token']}" />
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	</div>	
+</section>
 <script id="news-form-html" type="text/html">
 	<div class="reply-item" (editor-index)>
 		<div class="col-sm-12 item-show" style="display:none" id="(item-add-show)" >

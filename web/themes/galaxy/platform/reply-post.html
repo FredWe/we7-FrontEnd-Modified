@@ -243,8 +243,12 @@ require(['angular.sanitize', 'bootstrap', 'underscore', 'util'], function(angula
 		<form id="reply-form" class="form-horizontal form" action="{php echo url('platform/reply/post', array('m' => $m, 'rid' => $rid))}" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<div class="col-sm-12">
-					<div class="panel panel-default">
-						<div class="panel-heading">{if empty($rid)}添加{else}修改{/if}回复规则 <span class="text-muted">删除，修改规则、关键字以及回复后，请提交以保存操作。</span></div>
+					<div class="box box-default">
+						<div class="box-header with-border">
+							<h3 class="box-title">
+								{if empty($rid)}添加{else}修改{/if}回复规则 <span class="text-muted">删除，修改规则、关键字以及回复后，请提交以保存操作。</span>
+							</h3>
+						</div>
 						<ul class="list-group">
 							<li class="list-group-item">
 								<div class="form-group">
@@ -318,8 +322,8 @@ require(['angular.sanitize', 'bootstrap', 'underscore', 'util'], function(angula
 								<div class="form-group" ng-show="reply.advTrigger">
 									<label class="col-xs-12 col-sm-3 col-md-2 control-label">高级触发列表</label>
 									<div class="col-sm-9">
-										<div class="panel panel-default tab-content">
-											<div class="panel-heading">
+										<div class="box box-default tab-content">
+											<div class="box-header with-border">
 												<ul class="nav nav-pills">
 													<li class="active"><a href="#contains" data-toggle="tab">包含关键字</a></li>
 													<li><a href="#regexp" data-toggle="tab">正则表达式模式匹配</a></li>
@@ -366,7 +370,7 @@ require(['angular.sanitize', 'bootstrap', 'underscore', 'util'], function(angula
 													</div>
 												</li>
 											</ul>
-											<div class="panel-footer">
+											<div class="box-footer">
 												<a href="javascript:;" class="btn btn-default" ng-click="trigger.addItem();" ng-bind="'添加' + trigger.labels[trigger.active]">添加</a>
 												<span class="help-block" ng-bind-html="trigger.descriptions[trigger.active]"></span>
 											</div>

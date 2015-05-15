@@ -1,18 +1,24 @@
 {template 'common/header'}
-<ul class="nav nav-tabs">
-	<li {if $do == 'display'}class="active"{/if}><a href="{php echo url('site/category/display');}">管理</a></li>
-	<li {if $do == 'post' && empty($id)}class="active"{/if}><a href="{php echo url('site/category/post');}">添加</a></li>
-	{if $do == 'post' && $id}
-	<li {if $do == 'post' && !empty($id)}class="active"{/if}><a href="{php echo url('site/category/post', array('id'=>$id));}">编辑</a></li>
-	{/if}
-</ul>
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li {if $do == 'display'}class="active"{/if}><a href="{php echo url('site/category/display');}">管理</a></li>
+		<li {if $do == 'post' && empty($id)}class="active"{/if}><a href="{php echo url('site/category/post');}">添加</a></li>
+		{if $do == 'post' && $id}
+		<li {if $do == 'post' && !empty($id)}class="active"{/if}><a href="{php echo url('site/category/post', array('id'=>$id));}">编辑</a></li>
+		{/if}
+	</ul>	
+</section>
 {if $do == 'post'}
-<div class="main">
+<section class="content">
 	<form action="" method="post" class="form-horizontal form" id="form1">
 	<input type="hidden" name="parentid" value="{$parent['id']}" />
-		<div class="panel panel-default">
-			<div class="panel-heading">分类详细设置</div>
-			<div class="panel-body">
+		<div class="box box-default">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					分类详细设置
+				</h3>
+			</div>
+			<div class="box-body">
 				{if !empty($category['name'])}
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">访问地址</label>
@@ -99,9 +105,13 @@
 			</div>
 		</div>
 
-		<div class="panel panel-default" id="style">
-			<div class="panel-heading">导航样式</div>
-			<div class="panel-body">
+		<div class="box box-default" id="style">
+			<div class="box-header with-border">
+				<h3 class="box-title">
+					导航样式
+				</h3>
+			</div>
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">图标类型</label>
 					<div class="col-sm-8 col-xs-12">
@@ -113,10 +123,11 @@
 					<div class="form-group">
 						<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">系统图标</label>
 						<div class="col-sm-8 col-xs-12">
-							<div class="input-group"">
+							<div class="input-group">
 								{php echo tpl_form_field_icon('icon[icon]', $category['css']['icon']['icon']);}
 							</div>
-							<span class="help-block">导航的背景图标，系统提供了丰富的图标ICON。</span></div>
+							<span class="help-block">导航的背景图标，系统提供了丰富的图标ICON。</span>
+						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-xs-12 col-sm-4 col-md-3 col-lg-2 control-label">图标颜色</label>
@@ -155,7 +166,7 @@
 		</div>
 	</div>
 	</form>
-</div>
+</section>
 <script type="text/javascript">
 <!--
 	require(['jquery', 'util'], function($, u){
@@ -179,11 +190,11 @@
 //-->
 </script>
 {elseif $do == 'display'}
-<div class="main">
+<section class="content">
 	<div class="category">
 		<form action="" method="post" onsubmit="return formcheck(this)">
-		<div class="panel panel-default">
-		<div class="panel-body table-responsive">
+		<div class="box box-default">
+		<div class="box-body table-responsive">
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -236,7 +247,7 @@
 			</div>
 		</form>
 	</div>
-</div>
+</section>
 <script>
 	require(['bootstrap'],function($){
 		$('.btn').hover(function(){

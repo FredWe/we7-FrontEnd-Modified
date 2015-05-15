@@ -1,15 +1,18 @@
 {template 'common/header'}
-<div class="main">
-<ul class="nav nav-tabs">
-	<li class="active"><a href="{php echo url('mc/business');}">商户管理</a></li>
-</ul>
-
+<section class="content-header">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="{php echo url('mc/business');}">商户管理</a></li>
+	</ul>	
+</section>
+<section class="content">
 {if ($do == 'display') && ($list['status'] == 1)}
 	<form action="" class="form-horizontal form" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="{$item['id']}">
-		<div class="panel panel-default">
-			<div class="panel-heading">商户基本信息</div>
-			<div class="panel-body">
+		<div class="box box-default">
+			<div class="box-header">
+				<h3 class="box-title">商户基本信息</h3>
+			</div>
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">名称</label>
 					<div class="col-sm-8 col-xs-12">
@@ -84,8 +87,6 @@
 			</div>
 		</div>
 	</form>
-
-	</div>
 {/if}
-
+</section>
 {template 'common/footer'}

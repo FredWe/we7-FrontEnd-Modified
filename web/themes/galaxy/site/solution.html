@@ -167,115 +167,110 @@
 	</div>
 </div>
 <script type="text/javascript">
-function max(a) {
-	var b = a[0];
-	for(var i=1;i<a.length;i++){ if(b<a[i])b=a[i]; }
-	return b;
-}
-
-function switchHandler(s) {
-	var mainurl = window.frames['main'].location;
-	if (window.frames['main'].location.href.indexOf('global') > -1) {
-		window.top.location.href = '?do=profile';
+	function max(a) {
+		var b = a[0];
+		for(var i=1;i<a.length;i++){ if(b<a[i])b=a[i]; }
+		return b;
 	}
-	window.top.location.href = '?do=profile';
-	$('#current-account').html(s);
-}
-function strlen(str) {
-		var n = 0;
-		for(i=0;i<str.length;i++){
-			var leg=str.charCodeAt(i);
-			n+=1;
+	function switchHandler(s) {
+		var mainurl = window.frames['main'].location;
+		if (window.frames['main'].location.href.indexOf('global') > -1) {
+			window.top.location.href = '?do=profile';
 		}
-		return n;
-}
-function leftScrollbar(e) {
-	$('.content-left').mCustomScrollbar({
-		theme:"dark-thin",
-		autoHideScrollbar:true,
-		scrollButtons:{
-			enable:true
-		},
-		advanced:{
-			updateOnBrowserResize:true,
-			updateOnContentResize:true,
-			autoScrollOnFocus:false
-		},
-		scrollInertia:150
-	});
-}
-
-$(document).ready(function() {
-	$(".hnav").delegate(".hnav-parent", "mouseout", function(){
-		$(".hnav-child").hide();
-	});
-	//左侧导航
-	//初始化第一条显示
-	$(".sidebar-nav .snav").eq(0).find(".snav-header").addClass("open");
-	$(".sidebar-nav .snav").eq(0).find(".snav-list").addClass("open");
-	$(".sidebar-nav").delegate(".snav-header", "click", function(){
-		var a = $(this).hasClass("open");
-		$(".sidebar-nav .snav .snav-header").removeClass("open");
-		$(".sidebar-nav .snav .snav-list").addClass("hide");
-		if(a) {
-			$(this).removeClass("open");
-			$(this).parent().find(".snav-list").each(function(i) {
-				$(this).addClass("hide");
-			});
-		} else {
-			$(this).addClass("open");
-			$(this).parent().find(".snav-list").each(function(i) {
-				$(this).removeClass("hide");
-			});
-		}
-		//右侧菜单滚动控制
-		var b = "#" + $(this).parent().attr("id");
-		$('.content-left').mCustomScrollbar("update");
-		$('.content-left').mCustomScrollbar("scrollTo", b);
-		return false;
-	});
-	$(".sidebar-nav .snav").each(function() {
-		if($(this).find(".snav-header").hasClass("open")) {
-			$(this).find(".snav-list").each(function() {
-				$(this).toggleClass("hide");
-			});
-		}
-		$(this).find(".snav-list").each(function() {
-			if($(this).hasClass("current")) {
-				$(this).parent().find(".snav-header").toggleClass("open");
-				$(this).parent().find(".snav-list").each(function() {
+		window.top.location.href = '?do=profile';
+		$('#current-account').html(s);
+	}
+	function strlen(str) {
+			var n = 0;
+			for(i=0;i<str.length;i++){
+				var leg=str.charCodeAt(i);
+				n+=1;
+			}
+			return n;
+	}
+	function leftScrollbar(e) {
+		$('.content-left').mCustomScrollbar({
+			theme:"dark-thin",
+			autoHideScrollbar:true,
+			scrollButtons:{
+				enable:true
+			},
+			advanced:{
+				updateOnBrowserResize:true,
+				updateOnContentResize:true,
+				autoScrollOnFocus:false
+			},
+			scrollInertia:150
+		});
+	}
+	$(document).ready(function() {
+		$(".hnav").delegate(".hnav-parent", "mouseout", function(){
+			$(".hnav-child").hide();
+		});
+		//左侧导航
+		//初始化第一条显示
+		$(".sidebar-nav .snav").eq(0).find(".snav-header").addClass("open");
+		$(".sidebar-nav .snav").eq(0).find(".snav-list").addClass("open");
+		$(".sidebar-nav").delegate(".snav-header", "click", function(){
+			var a = $(this).hasClass("open");
+			$(".sidebar-nav .snav .snav-header").removeClass("open");
+			$(".sidebar-nav .snav .snav-list").addClass("hide");
+			if(a) {
+				$(this).removeClass("open");
+				$(this).parent().find(".snav-list").each(function(i) {
+					$(this).addClass("hide");
+				});
+			} else {
+				$(this).addClass("open");
+				$(this).parent().find(".snav-list").each(function(i) {
+					$(this).removeClass("hide");
+				});
+			}
+			//右侧菜单滚动控制
+			var b = "#" + $(this).parent().attr("id");
+			$('.content-left').mCustomScrollbar("update");
+			$('.content-left').mCustomScrollbar("scrollTo", b);
+			return false;
+		});
+		$(".sidebar-nav .snav").each(function() {
+			if($(this).find(".snav-header").hasClass("open")) {
+				$(this).find(".snav-list").each(function() {
 					$(this).toggleClass("hide");
 				});
 			}
-		});
-		$(this).find(".snav-list a,.snav-header-list a").click(function() {
-			$(".snav-list,.snav-header-list").removeClass("current");
-			$(this).parent().addClass("current");
-			if ($(this).attr('target') == '_blank') {
-				return true;
-			} else {
-				window.frames['main'].location.href= $(this).attr("href");
-			}
-			return false;
+			$(this).find(".snav-list").each(function() {
+				if($(this).hasClass("current")) {
+					$(this).parent().find(".snav-header").toggleClass("open");
+					$(this).parent().find(".snav-list").each(function() {
+						$(this).toggleClass("hide");
+					});
+				}
+			});
+			$(this).find(".snav-list a,.snav-header-list a").click(function() {
+				$(".snav-list,.snav-header-list").removeClass("current");
+				$(this).parent().addClass("current");
+				if ($(this).attr('target') == '_blank') {
+					return true;
+				} else {
+					window.frames['main'].location.href= $(this).attr("href");
+				}
+				return false;
+			});
 		});
 	});
-});
-
-
-$(function() {
-	//调整框架宽高 兼容ie8
-	$(".content-main, .content-main .content-right").height($(window).height()-40-20);
-	$(".content-main .content-left").height($(window).height()-40-20-40);
-	$("#main").width($(window).width()-200-20);
-	//右侧菜单滚动控制
-	leftScrollbar();
-});
-$(window).resize(function(){
-	//调整框架宽高 兼容ie8
-	$(".content-main, .content-main .content-right").height($(window).height()-40-20);
-	$(".content-main .content-left").height($(window).height()-40-20-40);
-	$("#main").width($(window).width()-200-20);
-});
+	$(function() {
+		//调整框架宽高 兼容ie8
+		$(".content-main, .content-main .content-right").height($(window).height()-40-20);
+		$(".content-main .content-left").height($(window).height()-40-20-40);
+		$("#main").width($(window).width()-200-20);
+		//右侧菜单滚动控制
+		leftScrollbar();
+	});
+	$(window).resize(function(){
+		//调整框架宽高 兼容ie8
+		$(".content-main, .content-main .content-right").height($(window).height()-40-20);
+		$(".content-main .content-left").height($(window).height()-40-20-40);
+		$("#main").width($(window).width()-200-20);
+	});
 </script>
-
 {/if}

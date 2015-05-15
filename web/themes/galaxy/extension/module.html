@@ -1,32 +1,32 @@
 {php $newUI = true;}
 {template 'common/header-gw'}
 <script type="text/javascript">
-require(['domReady', 'jquery'], function(dom, $){
-	dom(function(){
-		$('.module').delegate('.media-description-button', 'click', function(){ //控制模块详细信息
-			$(this).parents('.item').find('.media-description').toggle();
-			return false;
-		});	
+	require(['domReady', 'jquery'], function(dom, $){
+		dom(function(){
+			$('.module').delegate('.media-description-button', 'click', function(){ //控制模块详细信息
+				$(this).parents('.item').find('.media-description').toggle();
+				return false;
+			});	
+		});
 	});
-});
 </script>
 <style type="text/css">
-small a{color:#999;}
-.form h4{margin-bottom:0;}
-#upgradelog {line-height: 25px;max-height:150px;overflow: auto;padding: 15px;text-indent: 30px;}
-/*模块列表样式*/
-.module .item{border-bottom:1px #DDD dotted;margin-bottom:10px; padding-bottom:5px;}
-.module .media .pull-right{margin-bottom:0;width:140px;overflow:hidden;}
-.module .media .pull-right .input-prepend{float:right;}
-.module .media .pull-right .input-prepend .add-on{padding:0 5px; height:23px; line-height:23px;}
-.module .media .pull-right .input-prepend select{padding:1px; height:25px; line-height:25px;}
-.module .module-set{text-align:right; margin-top:6px;float:right;height:25px}
-.module .module-set a{margin-left:5px;}
-.module .media-body span{margin-top:6px; display:inline-block;}
-.module .media-object{display:inline-block; float:left; margin-right:10px; width:48px; height:48px; overflow:hidden;}
-.module .media-heading{font-weight:normal; font-size:16px;}
-.module .media-description{display:none; margin-top:5px; overflow:hidden; background:#EEE; padding:5px; color:#666;}
-.module div.alert{font-size:14px; font-weight:600; margin-bottom:10px;}
+	small a{color:#999;}
+	.form h4{margin-bottom:0;}
+	#upgradelog {line-height: 25px;max-height:150px;overflow: auto;padding: 15px;text-indent: 30px;}
+	/*模块列表样式*/
+	.module .item{border-bottom:1px #DDD dotted;margin-bottom:10px; padding-bottom:5px;}
+	.module .media .pull-right{margin-bottom:0;width:140px;overflow:hidden;}
+	.module .media .pull-right .input-prepend{float:right;}
+	.module .media .pull-right .input-prepend .add-on{padding:0 5px; height:23px; line-height:23px;}
+	.module .media .pull-right .input-prepend select{padding:1px; height:25px; line-height:25px;}
+	.module .module-set{text-align:right; margin-top:6px;float:right;height:25px}
+	.module .module-set a{margin-left:5px;}
+	.module .media-body span{margin-top:6px; display:inline-block;}
+	.module .media-object{display:inline-block; float:left; margin-right:10px; width:48px; height:48px; overflow:hidden;}
+	.module .media-heading{font-weight:normal; font-size:16px;}
+	.module .media-description{display:none; margin-top:5px; overflow:hidden; background:#EEE; padding:5px; color:#666;}
+	.module div.alert{font-size:14px; font-weight:600; margin-bottom:10px;}
 </style>
 {template 'extension/module-tabs'}
 <div class="clearfix">

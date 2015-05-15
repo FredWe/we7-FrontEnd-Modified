@@ -9,10 +9,8 @@
               </div>
             </div><!-- /.box-header -->
             <div class="box-body">
-				<div class="account">
+				<div class="account row">
 					{loop $accounts $account}
-					<div class="panel panel-default row">
-						<div class="panel-body">
 							<div class="col-sm-3">
 								<img src="{$_W['attachurl']}headimg_{$account['acid']}.jpg?acid={$account['acid']}" alt="{$account['name']}" class="img-rounded" onerror="this.src='resource/images/gw-wx.gif'" >
 							</div>
@@ -28,8 +26,6 @@
 								<span class="text-warning"><i class="fa fa-times-circle"></i> 未接入{$accounttypes[$account['type']]['title']}</span>
 								{/if}
 							</div>
-						</div>
-					</div>
 					{/loop}
 				</div>
 
