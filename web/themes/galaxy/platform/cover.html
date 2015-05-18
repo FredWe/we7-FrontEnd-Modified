@@ -1,16 +1,16 @@
 {template 'common/header'}
 
 <section class="content-header">
-{if $do == 'module'}
-<ol class="breadcrumb" style="padding:5px 0;">
-	<li><a href="./?refresh"><i class="fa fa-cogs"></i> &nbsp; 扩展功能</a></li>
-	<li><a href="{url 'home/welcome/ext' array('m' => $module['name'])}">{$types[$module['type']]['title']}模块 - {$module['title']}</a></li>
-	<li class="active">{$entry['title']}</li>
-</ol>
-{/if}	
-	<ul class="nav nav-tabs">
-		<li class="active"><a href="?{$_SERVER['QUERY_STRING']}">{$entry['title']}</a></li>
-	</ul>	
+	{if $do == 'module'}
+		<ol class="breadcrumb" style="padding:5px 0;">
+			<li><a href="./?refresh"><i class="fa fa-cogs"></i> &nbsp; 扩展功能</a></li>
+			<li><a href="{url 'home/welcome/ext' array('m' => $module['name'])}">{$types[$module['type']]['title']}模块 - {$module['title']}</a></li>
+			<li class="active">{$entry['title']}</li>
+		</ol>
+	{/if}	
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="?{$_SERVER['QUERY_STRING']}">{$entry['title']}</a></li>
+		</ul>	
 </section>
 <style type="text/css">
 	.help-block em{display:inline-block;width:10em;font-weight:bold;font-style:normal;}

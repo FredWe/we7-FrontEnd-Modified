@@ -4368,4 +4368,7 @@ fieldset[disabled] .btn-vk.active {
 .nav.nav-tabs{margin-bottom:0px; border-color:#428bca;}
 h5.page-header{padding-top:10px; }
 .table{table-layout:fixed; min-width:10px;}
+.box .list-group{padding:15px;}
+ul.nav-tabs>li.active>a{border-bottom-width: 0;}
+section.sidebar{z-index:1010;}*/
 /*.main-footer{padding:30px; }*/
