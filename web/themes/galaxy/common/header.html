@@ -2,7 +2,7 @@
 <div class="wrapper">
 	<header class="main-header">
 		<!-- Logo -->
-		<a href=href="./?refresh" class="logo">
+		<a href="./?refresh" class="logo">
 		  <!-- mini logo for sidebar mini 50x50 pixels -->
 		  <span class="logo-mini"><i class="fa fa-reply-all"></i></span>
 		  <!-- logo for regular state and mobile devices -->
@@ -10,10 +10,39 @@
 		</a>
 		<div class="navbar navbar-inverse navbar-static-top" role="navigation">
 				<!-- Sidebar toggle button-->
-				<a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+				<a class="sidebar-toggle" role="button" data-toggle="offcanvas" href="#">
 					<span class="sr-only">Toggle navigation</span>
-				</a>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>				
 				{if defined('IN_SOLUTION')}
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="display:block; max-width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; "><i class="fa fa-group"></i>{$_W['account']['name']} <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								{if $_W['role'] != 'operator'}
+								<li><a href="{url 'account/post' array('uniacid' => $_W['uniacid'])}" target="_blank"><i class="fa fa-weixin fa-fw"></i> 编辑当前账号资料</a></li>
+								{/if}
+								<li><a href="{url 'account/display'}" target="_blank"><i class="fa fa-cogs fa-fw"></i> 管理其它公众号</a></li>
+								<li><a href="{url 'utility/emulator'}" target="_blank"><i class="fa fa-mobile fa-fw"></i> 模拟测试</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="display:block; max-width:185px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; "><i class="fa fa-user"></i>{$_W['user']['username']} ({if $_W['role'] == 'founder'}系统管理员{elseif $_W['role'] == 'manager'}公众号管理员{else}公众号操作员{/if}) <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="{url 'user/profile/profile'}" target="_blank"><i class="fa fa-weixin fa-fw"></i> 我的账号</a></li>
+								{if $_W['role'] != 'operator'}
+								<li class="divider"></li>
+								<li><a href="{url 'system/welcome'}" target="_blank"><i class="fa fa-sitemap fa-fw"></i> 系统选项</a></li>
+								<li><a href="{url 'system/welcome'}" target="_blank"><i class="fa fa-cloud-download fa-fw"></i> 自动更新</a></li>
+								<li><a href="{url 'system/updatecache'}" target="_blank"><i class="fa fa-refresh fa-fw"></i> 更新缓存</a></li>
+								<li class="divider"></li>
+								{/if}
+								<li><a href="{url 'user/logout'}"><i class="fa fa-sign-out fa-fw"></i> 退出系统</a></li>
+							</ul>
+						</li>
+					</ul>
 					<ul class="nav navbar-nav">
 						{php global $solution,$solutions;}
 						{if $_W['role'] != 'operator'}
@@ -28,46 +57,48 @@
 						{/if}
 					</ul>
 				{else}
-					<ul class="nav navbar-nav">
-						<li><a href="./?refresh"><i class="fa fa-reply-all"></i>返回系统</a></li>
-						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('platform', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'platform'} class="active"{/if}><a href="{url 'home/welcome/platform'}"><i class="fa fa-cog"></i>基础设置</a></li>{/if}
-						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('site', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'site'} class="active"{/if}><a href="{url 'home/welcome/site'}"><i class="fa fa-life-bouy"></i>微站功能</a></li>{/if}
-						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('mc', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'mc'} class="active"{/if}><a href="{url 'home/welcome/mc'}"><i class="fa fa-gift"></i>粉丝营销</a></li>{/if}
-						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('setting', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'setting'} class="active"{/if}><a href="{url 'home/welcome/setting'}"><i class="fa fa-umbrella"></i>功能选项</a></li>{/if}
-						{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('ext', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'ext'} class="active"{/if}><a href="{url 'home/welcome/ext'}"><i class="fa fa-cubes"></i>扩展功能</a></li>{/if}
-						{if FRAME == 'solution'}<li class="active"><a href="{url 'home/welcome/solution' array('m' => $m)}"><i class="fa fa-comments"></i>行业功能 - {$solution['title']}</a></li>{/if}
-						{if IMS_FAMILY != 'x'}
-						<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
-						<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
-						{/if}
-					</ul>
+					<div class="navbar-custom-menu">
+						<ul class="nav navbar-nav">
+							<li><a href="./?refresh"><i class="fa fa-reply-all"></i>返回系统</a></li>
+							{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('platform', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'platform'} class="active"{/if}><a href="{url 'home/welcome/platform'}"><i class="fa fa-cog"></i>基础设置</a></li>{/if}
+							{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('site', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'site'} class="active"{/if}><a href="{url 'home/welcome/site'}"><i class="fa fa-life-bouy"></i>微站功能</a></li>{/if}
+							{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('mc', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'mc'} class="active"{/if}><a href="{url 'home/welcome/mc'}"><i class="fa fa-gift"></i>粉丝营销</a></li>{/if}
+							{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('setting', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'setting'} class="active"{/if}><a href="{url 'home/welcome/setting'}"><i class="fa fa-umbrella"></i>功能选项</a></li>{/if}
+							{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('ext', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'ext'} class="active"{/if}><a href="{url 'home/welcome/ext'}"><i class="fa fa-cubes"></i>扩展功能</a></li>{/if}
+							{if FRAME == 'solution'}<li class="active"><a href="{url 'home/welcome/solution' array('m' => $m)}"><i class="fa fa-comments"></i>行业功能 - {$solution['title']}</a></li>{/if}
+							{if IMS_FAMILY != 'x'}
+							<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
+							<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
+							{/if}
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="display:block; max-width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; "><i class="fa fa-group"></i>{$_W['account']['name']} <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									{if $_W['role'] != 'operator'}
+									<li><a href="{url 'account/post' array('uniacid' => $_W['uniacid'])}" target="_blank"><i class="fa fa-weixin fa-fw"></i> 编辑当前账号资料</a></li>
+									{/if}
+									<li><a href="{url 'account/display'}" target="_blank"><i class="fa fa-cogs fa-fw"></i> 管理其它公众号</a></li>
+									<li><a href="{url 'utility/emulator'}" target="_blank"><i class="fa fa-mobile fa-fw"></i> 模拟测试</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="display:block; max-width:185px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; "><i class="fa fa-user"></i>{$_W['user']['username']} ({if $_W['role'] == 'founder'}系统管理员{elseif $_W['role'] == 'manager'}公众号管理员{else}公众号操作员{/if}) <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="{url 'user/profile/profile'}" target="_blank"><i class="fa fa-weixin fa-fw"></i> 我的账号</a></li>
+									{if $_W['role'] != 'operator'}
+									<li class="divider"></li>
+									<li><a href="{url 'system/welcome'}" target="_blank"><i class="fa fa-sitemap fa-fw"></i> 系统选项</a></li>
+									<li><a href="{url 'system/welcome'}" target="_blank"><i class="fa fa-cloud-download fa-fw"></i> 自动更新</a></li>
+									<li><a href="{url 'system/updatecache'}" target="_blank"><i class="fa fa-refresh fa-fw"></i> 更新缓存</a></li>
+									<li class="divider"></li>
+									{/if}
+									<li><a href="{url 'user/logout'}"><i class="fa fa-sign-out fa-fw"></i> 退出系统</a></li>
+								</ul>
+							</li>
+						</ul>						
+					</div>
 				{/if}
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="display:block; max-width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; "><i class="fa fa-group"></i>{$_W['account']['name']} <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							{if $_W['role'] != 'operator'}
-							<li><a href="{url 'account/post' array('uniacid' => $_W['uniacid'])}" target="_blank"><i class="fa fa-weixin fa-fw"></i> 编辑当前账号资料</a></li>
-							{/if}
-							<li><a href="{url 'account/display'}" target="_blank"><i class="fa fa-cogs fa-fw"></i> 管理其它公众号</a></li>
-							<li><a href="{url 'utility/emulator'}" target="_blank"><i class="fa fa-mobile fa-fw"></i> 模拟测试</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="display:block; max-width:185px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; "><i class="fa fa-user"></i>{$_W['user']['username']} ({if $_W['role'] == 'founder'}系统管理员{elseif $_W['role'] == 'manager'}公众号管理员{else}公众号操作员{/if}) <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="{url 'user/profile/profile'}" target="_blank"><i class="fa fa-weixin fa-fw"></i> 我的账号</a></li>
-							{if $_W['role'] != 'operator'}
-							<li class="divider"></li>
-							<li><a href="{url 'system/welcome'}" target="_blank"><i class="fa fa-sitemap fa-fw"></i> 系统选项</a></li>
-							<li><a href="{url 'system/welcome'}" target="_blank"><i class="fa fa-cloud-download fa-fw"></i> 自动更新</a></li>
-							<li><a href="{url 'system/updatecache'}" target="_blank"><i class="fa fa-refresh fa-fw"></i> 更新缓存</a></li>
-							<li class="divider"></li>
-							{/if}
-							<li><a href="{url 'user/logout'}"><i class="fa fa-sign-out fa-fw"></i> 退出系统</a></li>
-						</ul>
-					</li>
-				</ul>
 		</div>
 	</header>
 	{if defined('IN_MESSAGE')}
@@ -106,7 +137,7 @@
 				<ul class="sidebar-menu">
 					<li class="header">MAIN NAVIGATION</li>
 					{loop $frames $k $frame}
-						<li class="treeview">
+						<li class="active treeview">
 							<a href="#frame-{$k}">
 								<i class="fa fa-link"></i>
 								<span>{$frame['title']}</span>
@@ -115,12 +146,31 @@
 							<ul class="treeview-menu">
 								{loop $frame['items'] $link}
 									{if !empty($link['append'])}
-										<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">
-											<a class="pull-right" href="{$link['append']['url']}">{$link['append']['title']}</a>
-											<span>{$link['title']}</span>
+										<!--<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">-->
+										<li class="{$link['active']}">
+											<a class="pull-right opt-a-high" href="{$link['append']['url']}">
+												{$link['append']['title']}
+											</a>		
+											<a href='{$link['url']}'>
+												<i class="fa fa-circle-o"></i>
+												{$link['title']}
+											</a>
 										</li>
 									{else}
+										<li class="{$link['active']}">
+											<a href="{$link['url']}">
+												<i class="fa fa-circle-o"></i>
+												{$link['title']}
+											</a>
+										</li>
+										<!--
+										<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">
+											<span>{$link['title']}</span>
+										</li>
+										-->
+										<!--
 										<a class="list-group-item{$link['active']}" href="{$link['url']}">{$link['title']}</a>
+									-->
 									{/if}
 								{/loop}
 							</ul>
@@ -140,35 +190,6 @@
 				</ul>
 		</aside>
 		<!---->
-		<!--
-		<aside class="main-sidebar">
-			<section class="sidebar">
-				<ul class="sidebar-menu">
-					{loop $frames $k $frame}
-						<li class="treeview">
-							<a href="#frame-{$k}">
-								<i class="fa fa-link"></i>
-								<span>{$frame['title']}</span>
-								<i class="fa fa-angle-left pull-right"></i>
-							</a>
-							<ul class="treeview-menu" style="display: block;">
-								{loop $frame['items'] $link}
-									{if !empty($link['append'])}
-										<li class="list-group-item{$link['active']}" onclick="window.location.href = '{$link['url']}';" style="cursor:pointer;">
-											<a class="pull-right" href="{$link['append']['url']}">{$link['append']['title']}</a>
-											<span>{$link['title']}</span>
-										</li>
-									{else}
-										<a class="list-group-item{$link['active']}" href="{$link['url']}">{$link['title']}</a>
-									{/if}
-								{/loop}
-							</ul>
-						</li>
-					{/loop}
-				</ul>
-			</section>
-		</aside>
-		-->
 		<div class="content-wrapper" style="min-height: 511px;">
 			{if CRUMBS_NAV == 1}
 				{php global $module_types;global $module;global $ptr_title;}

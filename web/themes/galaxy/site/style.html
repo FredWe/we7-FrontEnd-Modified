@@ -242,127 +242,64 @@
 	.template .item-build-div2{text-align:center; line-height:30px; padding-top:150px;}
 </style>
 <section class="content">
-	<!--
 	<div class="row">
-            <div class="col-md-12">
-              <div class="nav-tabs-custom">
-                <ul class="nav nav-tabs">
-                	<li class="pull-left header">
-                		<a href="javascript:;" class="navbar-brand">微站风格类型</a>
-                	</li>
+		<div class="col-md-12">
+			<div class="nav-tabs-custom">
+				<ul class="nav nav-tabs">
+					<li class="pull-left header">
+						<a href="javascript:;" class="navbar-brand">微站风格类型</a>
+					</li>
 					<li {if empty($_GPC['type']) || $_GPC['type'] == 'all'} class="active" {/if}>
-						<a data-toggle="tab" href="{php echo url('site/style/template', array('type' => 'all'));}">全部</a>
+						<a href="{php echo url('site/style/template', array('type' => 'all'));}">全部</a>
 					</li>
 					{loop $temtypes $type}
 						<li {if $_GPC['type'] == $type['name']} class="active" {/if}>
-							<a data-toggle="tab" href="{php echo url('site/style/template', array('type' => $type['name']));}">{$type['title']}</a>
+							<a href="{php echo url('site/style/template', array('type' => $type['name']));}">{$type['title']}</a>
 						</li>
 					{/loop}
-                </ul>
-                <div class="tab-content template panel-body">
-				{loop $stylesResult $item}
-					{if !empty($item['styleid'])}
-						<div class="item item-style{if $setting['styleid'] == $item['styleid']} active{/if}">
-							<a class="fa fa-times"  onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" title="删除风格" href="{php echo url('site/style/del', array('styleid' => $item['styleid']))}"></a>
-							<div class="title">
-								<div style="overflow:hidden; height:28px;">{$item['title']} ({$item['name']})</div>
-								<a href="{php echo url('site/style/default', array('styleid' => $item['styleid']))}">
-									<img src="../app/themes/{$item['name']}/preview.jpg" class="img-rounded" />
-								</a>
-								<span class="fa fa-check"></span>
-							</div>
-							<div class="btn-group  btn-group-justified">
-								<a href="{php echo url('site/style/designer', array('styleid' => $item['styleid']))}" class="btn btn-default btn-xs">设计风格</a>
-								<a href="{php echo url('site/style/copy', array('styleid' => $item['styleid']))}" class="btn btn-default btn-xs">复制风格</a>
-								<a href="javascript:;" onclick="preview('{$item['styleid']}');return false;" class="btn btn-default btn-xs">预览</a>
-							</div>
-						</div>
-					{else}
-						<div class="item" style="border-color:#FFF;">
-							<div class="item-bg"></div>
-							<div class="item-build-div1">
-								<div class="item-build-div2">
-									<a href="{php echo url('site/style/build', array('templateid' => $item['templateid']))}" class="btn btn-warning item-build-btn" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="该模板尚未激活，激活后可正常使用！">点击激活</a>
+				</ul>
+				<div class="tab-content template box-body">
+					{loop $stylesResult $item}
+						{if !empty($item['styleid'])}
+							<div class="item item-style{if $setting['styleid'] == $item['styleid']} active{/if}">
+								<a class="fa fa-times"  onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" title="删除风格" href="{php echo url('site/style/del', array('styleid' => $item['styleid']))}"></a>
+								<div class="title">
+									<div style="overflow:hidden; height:28px;">{$item['title']} ({$item['name']})</div>
+									<a href="{php echo url('site/style/default', array('styleid' => $item['styleid']))}">
+										<img src="../app/themes/{$item['name']}/preview.jpg" class="img-rounded" />
+									</a>
+									<span class="fa fa-check"></span>
+								</div>
+								<div class="btn-group  btn-group-justified">
+									<a href="{php echo url('site/style/designer', array('styleid' => $item['styleid']))}" class="btn btn-default btn-xs">设计风格</a>
+									<a href="{php echo url('site/style/copy', array('styleid' => $item['styleid']))}" class="btn btn-default btn-xs">复制风格</a>
+									<a href="javascript:;" onclick="preview('{$item['styleid']}');return false;" class="btn btn-default btn-xs">预览</a>
 								</div>
 							</div>
-							<div class="title">
-								<div style="overflow:hidden; height:28px;">{$item['title']}</div>
-								<img src="../app/themes/{$item['name']}/preview.jpg" class="img-rounded" />
+						{else}
+							<div class="item" style="border-color:#FFF;">
+								<div class="item-bg"></div>
+								<div class="item-build-div1">
+									<div class="item-build-div2">
+										<a href="{php echo url('site/style/build', array('templateid' => $item['templateid']))}" class="btn btn-warning item-build-btn" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="该模板尚未激活，激活后可正常使用！">点击激活</a>
+									</div>
+								</div>
+								<div class="title">
+									<div style="overflow:hidden; height:28px;">{$item['title']}</div>
+									<img src="../app/themes/{$item['name']}/preview.jpg" class="img-rounded" />
+								</div>
+								<div class="btn-group  btn-group-justified">
+									<a href="#" class="btn btn-default btn-xs">设计风格</a>
+									<a href="#" class="btn btn-default btn-xs">复制风格</a>
+									<a href="#" class="btn btn-default btn-xs">预览</a>
+								</div>
 							</div>
-							<div class="btn-group  btn-group-justified">
-								<a href="#" class="btn btn-default btn-xs">设计风格</a>
-								<a href="#" class="btn btn-default btn-xs">复制风格</a>
-								<a href="#" class="btn btn-default btn-xs">预览</a>
-							</div>
-						</div>
-					{/if}
-				{/loop}
-                </div>
-              </div>
-            </div>
-          </div>
-	-->          
-	<div class="clearfix template">
-		<div class="box box-default">
-			<nav role="navigation" class="navbar navbar-default navbar-static-top" style="margin-bottom:0;">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<a href="javascript:;" class="navbar-brand">微站风格类型</a>
-					</div>
-					<ul class="nav navbar-nav nav-btns">
-						<li {if empty($_GPC['type']) || $_GPC['type'] == 'all'} class="active" {/if}>
-							<a href="{php echo url('site/style/template', array('type' => 'all'));}">全部</a>
-						</li>
-						{loop $temtypes $type}
-							<li {if $_GPC['type'] == $type['name']} class="active" {/if}>
-								<a href="{php echo url('site/style/template', array('type' => $type['name']));}">{$type['title']}</a>
-							</li>
-						{/loop}
-					</ul>
+						{/if}
+					{/loop}
 				</div>
-			</nav>
-			<div class="box-body">
-				{loop $stylesResult $item}
-					{if !empty($item['styleid'])}
-						<div class="item item-style{if $setting['styleid'] == $item['styleid']} active{/if}">
-							<a class="fa fa-times"  onclick="if(!confirm('删除后将不可恢复,确定删除吗?')) return false;" title="删除风格" href="{php echo url('site/style/del', array('styleid' => $item['styleid']))}"></a>
-							<div class="title">
-								<div style="overflow:hidden; height:28px;">{$item['title']} ({$item['name']})</div>
-								<a href="{php echo url('site/style/default', array('styleid' => $item['styleid']))}">
-									<img src="../app/themes/{$item['name']}/preview.jpg" class="img-rounded" />
-								</a>
-								<span class="fa fa-check"></span>
-							</div>
-							<div class="btn-group  btn-group-justified">
-								<a href="{php echo url('site/style/designer', array('styleid' => $item['styleid']))}" class="btn btn-default btn-xs">设计风格</a>
-								<a href="{php echo url('site/style/copy', array('styleid' => $item['styleid']))}" class="btn btn-default btn-xs">复制风格</a>
-								<a href="javascript:;" onclick="preview('{$item['styleid']}');return false;" class="btn btn-default btn-xs">预览</a>
-							</div>
-						</div>
-					{else}
-						<div class="item" style="border-color:#FFF;">
-							<div class="item-bg"></div>
-							<div class="item-build-div1">
-								<div class="item-build-div2">
-									<a href="{php echo url('site/style/build', array('templateid' => $item['templateid']))}" class="btn btn-warning item-build-btn" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="该模板尚未激活，激活后可正常使用！">点击激活</a>
-								</div>
-							</div>
-							<div class="title">
-								<div style="overflow:hidden; height:28px;">{$item['title']}</div>
-								<img src="../app/themes/{$item['name']}/preview.jpg" class="img-rounded" />
-							</div>
-							<div class="btn-group  btn-group-justified">
-								<a href="#" class="btn btn-default btn-xs">设计风格</a>
-								<a href="#" class="btn btn-default btn-xs">复制风格</a>
-								<a href="#" class="btn btn-default btn-xs">预览</a>
-							</div>
-						</div>
-					{/if}
-				{/loop}
 			</div>
 		</div>
-	</div>	
-	
+	</div>
 </section>
 <script type="text/javascript">
 	require(['bootstrap'],function($){
