@@ -21,6 +21,44 @@
 	p.module-description{display:block;padding:3px 10px;}
 </style>
 <section class="content">
+	<div class="row">
+		{loop $modulelist $row}
+			<div class="col-sm-6 col-sm-4 col-md-3 col-lg-2">
+				<div class="thumbnail">
+					<div class="module-pic">
+						<img {if file_exists('../framework/builtin/'. strtolower($row['name']).'/preview.jpg')}src="../framework/builtin/{php echo strtolower($row['name']);}/preview.jpg"{else}src="../addons/{php echo strtolower($row['name']);}/preview.jpg"{/if} onerror="this.src='../web/resource/images/nopic.jpg'" {if !$row['enabled']}class="gray"{/if}>
+						<div class="module-detail">
+							<h5 class="module-title">{$row['title']}<small>（标识：{$row['name']}）</small></h5>
+							<p class="module-brief">{$row['ability']}</p>
+							<p class="module-description">{if $row['isrulefields']}<a href="{php echo url('platform/reply/post', array('m' => $row['name']))}" class="text-info">添加规则</a>{/if}</p>
+						</div>
+						{if $row['official']}
+						<span class="official"><img src="resource/images/module/official.png"/></span>
+						{/if}
+					</div>
+					<div class="module-button">
+						{if $row['issystem']}
+							<a href="javascript:;" class="pull-right"><span>此模块为系统模块</span></a>
+						{else}
+						{if $row['enabled']}
+							<a id="enabled_{$row['mid']}_0" href="{php echo url('profile/module/enable', array('m' => $row['name'], 'enabled' => 0))}" onclick="return ajaxopen(this.href)" class="btn btn-primary module-button-switch">禁用</a>
+						{else}
+							<a id="enabled_{$row['mid']}_1" href="{php echo url('profile/module/enable', array('m' => $row['name'], 'enabled' => 1))}" onclick="return ajaxopen(this.href);" class="btn btn-danger module-button-switch">启用</a>
+						{/if}
+						{/if}
+						{if $row['enabled'] && !$row['issystem']}
+							{if $row['shortcut']}
+							<a href="{php echo url('profile/module/shortcut', array('m' => $row['name'], 'shortcut' => 0))}" onclick="return ajaxopen(this.href);" class="btn btn-danger">移出快捷操作</a>
+							{else}
+							<a href="{php echo url('profile/module/shortcut', array('m' => $row['name'], 'shortcut' => 1))}" onclick="return ajaxopen(this.href);" class="btn btn-default">加入快捷操作</a>
+							{/if}
+						{/if}
+					</div>
+				</div>
+			</div>
+		{/loop}		
+	</div>
+	<!--
 	<div class="module">
 		<ul class="thumbnails">
 			{loop $modulelist $row}
@@ -62,7 +100,8 @@
 		<div>
 			{$pager}
 		</div>
-	</div>	
+	</div>
+	-->	
 </section>
 <script type="text/javascript">
 		function toggle_description(id) {

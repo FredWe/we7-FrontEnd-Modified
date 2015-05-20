@@ -239,7 +239,7 @@ require(['angular.sanitize', 'bootstrap', 'underscore', 'util'], function(angula
 
 </script>
 <section class="content">
-	<div class="clearfix ng-scope" ng-controller="replyForm"><!--ng-cloak to ng-scope-->
+	<div class="clearfix ng-cloak" ng-controller="replyForm">
 		<form id="reply-form" class="form-horizontal form" action="{php echo url('platform/reply/post', array('m' => $m, 'rid' => $rid))}" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<div class="col-sm-12">
@@ -386,7 +386,7 @@ require(['angular.sanitize', 'bootstrap', 'underscore', 'util'], function(angula
 			</div>
 			
 			<div class="box box-default">
-				<div class="box-body">
+				<div class="box-body no-padding">
 					<div class="form-group">
 						<div class="col-sm-12">
 							{php echo module_build_form($m, $rid);}
