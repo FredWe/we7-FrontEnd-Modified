@@ -4386,3 +4386,12 @@ li.side-li i{width: 20px;}
 h3.control-sidebar-heading{margin-top: 0;}
 .sidebar-menu .user-footer{padding: 5px;}
 .sidebar a#btn-out{color: #444;}
+.login-logo{
+  text-align: center;
+}
+.login-logo a {
+    background: rgba(0, 0, 0, 0) url("../../../../resource/images/gw-logo.png") no-repeat scroll 0 0;
+    display: inline-block;
+    height: 95px;
+    width: 420px;
+}
