@@ -24,7 +24,7 @@
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link href="./themes/galaxy/dist/css/skins/skin-blue.css" rel="stylesheet" type="text/css" />
+    <link href="./themes/galaxy/dist/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
 	<!--[if lt IE 9]>
 		<script src="./resource/js/html5shiv.min.js"></script>
 		<script src="./resource/js/respond.min.js"></script>
@@ -37,25 +37,25 @@
 	}
 	
 	window.sysinfo = {
-{if !empty($_W['uniacid'])}
-		'uniacid': '{$_W['uniacid']}',
-{/if}
-{if !empty($_W['acid'])}
-		'acid': '{$_W['acid']}',
-{/if}
-{if !empty($_W['openid'])}
-		'openid': '{$_W['openid']}',
-{/if}
-{if !empty($_W['uid'])}
-		'uid': '{$_W['uid']}',
-{/if}
-		'siteroot': '{$_W['siteroot']}',
-		'siteurl': '{$_W['siteurl']}',
-		'attachurl': '{$_W['attachurl']}',
-{if defined('MODULE_URL')}
-		'MODULE_URL': '{MODULE_URL}',
-{/if}
-		'cookie' : {'pre': '{$_W['config']['cookie']['pre']}'}
+		{if !empty($_W['uniacid'])}
+				'uniacid': '{$_W['uniacid']}',
+		{/if}
+		{if !empty($_W['acid'])}
+				'acid': '{$_W['acid']}',
+		{/if}
+		{if !empty($_W['openid'])}
+				'openid': '{$_W['openid']}',
+		{/if}
+		{if !empty($_W['uid'])}
+				'uid': '{$_W['uid']}',
+		{/if}
+				'siteroot': '{$_W['siteroot']}',
+				'siteurl': '{$_W['siteurl']}',
+				'attachurl': '{$_W['attachurl']}',
+		{if defined('MODULE_URL')}
+				'MODULE_URL': '{MODULE_URL}',
+		{/if}
+				'cookie' : {'pre': '{$_W['config']['cookie']['pre']}'}
 	};
 	</script>
 </head>

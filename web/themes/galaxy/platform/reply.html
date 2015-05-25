@@ -55,17 +55,19 @@
 			{loop $replies $row}
 			<div class="box box-default">
 				<div class="box-header with-border clearfix">
-					{$row['name']}
-					<span class="pull-right">
-						{if $row['displayorder'] > 0}
-							{if $row['displayorder'] == '255'}
-								<span class="label label-primary">置顶</span>
-							{else}
-								<span class="label label-info">优先级 {$row['displayorder']}</span>
+					<h3 class="box-title">
+						{$row['name']}
+						<span class="pull-right">
+							{if $row['displayorder'] > 0}
+								{if $row['displayorder'] == '255'}
+									<span class="label label-primary">置顶</span>
+								{else}
+									<span class="label label-info">优先级 {$row['displayorder']}</span>
+								{/if}
 							{/if}
-						{/if}
-						{if $row['status'] == '0'}<span class="label label-danger">已禁用</span>{/if}
-					</span>
+							{if $row['status'] == '0'}<span class="label label-danger">已禁用</span>{/if}
+						</span>						
+					</h3>
 				</div>
 				<div class="box-body">
 					{loop $row['keywords'] $kw}

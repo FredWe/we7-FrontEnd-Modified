@@ -4389,9 +4389,28 @@ h3.control-sidebar-heading{margin-top: 0;}
 .login-logo{
   text-align: center;
 }
-.login-logo a {
-    background: rgba(0, 0, 0, 0) url("../../../../resource/images/gw-logo.png") no-repeat scroll 0 0;
+.navbar-inverse .navbar-nav > .active > a, 
+.navbar-inverse .navbar-nav > .active > a:hover, 
+.navbar-inverse .navbar-nav > .active > a:focus {
+    background: rgba(0, 0, 0, 0.1) none repeat scroll 0 0;
+    color: #f6f6f6;
+}
+.gw-logo {
+    background: rgba(0, 0, 0, 0) url("../img/LOGO100.png") no-repeat scroll 0 0;
     display: inline-block;
-    height: 95px;
+    height: 4em;
     width: 420px;
+}
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    margin-left: 0;
+    position: static;
+}
+.content .gw-display-btn{
+    padding: 0.5em;
+}
+ol#gw-breadcrumb >li + li::before {
+    content: "| ";
+}
+.breadcrumb li a.active{
+  color:#777;
 }
