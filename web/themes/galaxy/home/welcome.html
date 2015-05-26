@@ -1,11 +1,11 @@
 {template 'common/header'}
 <section class="content-header">
-	<ul class="nav nav-tabs">
+	<ol class="breadcrumb">
 		<li class="active"><a href="{php echo url('home/welcome/' . $do);}">账号概况 - {$title}</a></li>
-	</ul>
+	</ol>
 </section>
 <section class="content"> 
-	<div class="clearfix welcome-container">
+	<div class="welcome-container">
 		{if $do != 'ext' && $do != 'solution'}
 		<div class="row">
 			<div class="col-md-12">

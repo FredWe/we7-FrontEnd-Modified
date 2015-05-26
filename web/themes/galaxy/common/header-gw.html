@@ -36,75 +36,75 @@
 		</header>
 		<div class="content-wrapper">
 			<section class="content-header">
-				<div class="row">
-					<div class="col-sm-6">
-				<div class="content-header">
-						<h1>
-							AdminLTE Documentation
-							<small>Current version 2.1.0</small>
-						</h1>	
-				</div>						
-					</div>
-					<div class="col-sm-6">
-				<div class="navbar navbar-static-top" role="navigation" style="padding-top:20px;">
-						<!--a class="navbar-brand gw-logo" href="./?refresh" {if !empty($_W['setting']['copyright']['blogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['blogo']);}') no-repeat;"{/if}></a-->
-						<ol id="gw-breadcrumb" class="breadcrumb pull-right">
-							<li>
-								<a href="{url 'account/display'}" class="tile img-rounded{if $controller == 'account'} active{/if}">
-									<i class="fa fa-comments"></i>
-									<span>公众号管理 </span>
-								</a>
-							</li>
-							<li>
-								<a href="{url 'system/welcome'}" class="tile img-rounded{if $controller == 'system'} active{/if}">
-									<i class="fa fa-sitemap"></i>
-									<span>系统 </span>
-								</a>
-							</li>
-							{if $_W['uid']}
-								<li>
-									<a href="{url 'user/logout'}" class="tile img-rounded">
-										<i class="fa fa-sign-out"></i>
-										<span>退出</span>
-									</a>
-								</li>
-							{/if}
-						</ol>
-				</div>						
-					</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-6">
+							<h3>
+								{php if(isset($title)) $_W['page']['title'] = $title}
+								{if !empty($_W['page']['title'])}
+								{$_W['page']['title']}
+								{/if}
+							</h3>	
+						</div>
+						<div class="col-sm-6">
+							<div class="navbar navbar-static-top" role="navigation" style="padding-top:20px;">
+									<!--a class="navbar-brand gw-logo" href="./?refresh" {if !empty($_W['setting']['copyright']['blogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['blogo']);}') no-repeat;"{/if}></a-->
+									<ol id="gw-breadcrumb" class="breadcrumb pull-right">
+										<li>
+											<a href="{url 'account/display'}" class="tile img-rounded{if $controller == 'account'} active{/if}">
+												<i class="fa fa-comments"></i>
+												<span>公众号管理 </span>
+											</a>
+										</li>
+										<li>
+											<a href="{url 'system/welcome'}" class="tile img-rounded{if $controller == 'system'} active{/if}">
+												<i class="fa fa-sitemap"></i>
+												<span>系统 </span>
+											</a>
+										</li>
+										{if $_W['uid']}
+											<li>
+												<a href="{url 'user/logout'}" class="tile img-rounded">
+													<i class="fa fa-sign-out"></i>
+													<span>退出</span>
+												</a>
+											</li>
+										{/if}
+									</ol>
+							</div>						
+						</div>
+					</div>					
 				</div>
-				
-
 			</section>
 			<section class="content">
 				{if defined('IN_MESSAGE')}
-				<div class="jumbotron clearfix alert alert-{$label}">
-					<div class="row">
-						<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-							<i class="fa fa-5x fa-{if $label=='success'}check-circle{/if}{if $label=='danger'}times-circle{/if}{if $label=='info'}info-circle{/if}{if $label=='warning'}exclamation-triangle{/if}"></i>
-						</div>
-						<div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
-							{if is_array($msg)}
-								<h2>MYSQL 错误：</h2>
-								<p>{php echo cutstr($msg['sql'], 300, 1);}</p>
-								<p><b>{$msg['error'][0]} {$msg['error'][1]}：</b>{$msg['error'][2]}</p>
-							{else}
-							<h2>{$caption}</h2>
-							<p>{$msg}</p>
-							{/if}
-							{if $redirect}
-							<p><a href="{$redirect}" class="alert-link">如果你的浏览器没有自动跳转，请点击此链接</a></p>
-							<script type="text/javascript">
-								setTimeout(function () {
-									location.href = "{$redirect}";
-								}, 3000);
-							</script>
-							{else}
-								<p>[<a href="javascript:history.go(-1);" class="alert-link">点击这里返回上一页</a>] &nbsp; [<a href="./?refresh" class="alert-link">首页</a>]</p>
-							{/if}
+					<div class="jumbotron clearfix alert alert-{$label}">
+						<div class="row">
+							<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+								<i class="fa fa-5x fa-{if $label=='success'}check-circle{/if}{if $label=='danger'}times-circle{/if}{if $label=='info'}info-circle{/if}{if $label=='warning'}exclamation-triangle{/if}"></i>
+							</div>
+							<div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+								{if is_array($msg)}
+									<h2>MYSQL 错误：</h2>
+									<p>{php echo cutstr($msg['sql'], 300, 1);}</p>
+									<p><b>{$msg['error'][0]} {$msg['error'][1]}：</b>{$msg['error'][2]}</p>
+								{else}
+								<h2>{$caption}</h2>
+								<p>{$msg}</p>
+								{/if}
+								{if $redirect}
+								<p><a href="{$redirect}" class="alert-link">如果你的浏览器没有自动跳转，请点击此链接</a></p>
+								<script type="text/javascript">
+									setTimeout(function () {
+										location.href = "{$redirect}";
+									}, 3000);
+								</script>
+								{else}
+									<p>[<a href="javascript:history.go(-1);" class="alert-link">点击这里返回上一页</a>] &nbsp; [<a href="./?refresh" class="alert-link">首页</a>]</p>
+								{/if}
+							</div>
 						</div>
 					</div>
-				</div>
 				{/if}
 
 <script>

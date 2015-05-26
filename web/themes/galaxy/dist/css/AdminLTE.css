@@ -316,9 +316,8 @@ a:focus {
   background: transparent;
   margin-top: 0px;
   margin-bottom: 0;
-  font-size: 12px;
+  font-size: 14px;
   padding: 7px 5px;
-  position: absolute;
   top: 15px;
   right: 10px;
   border-radius: 2px;
@@ -4377,7 +4376,7 @@ section.sidebar{z-index:1010;}
 #gw-breadcrumb{background-color:transparent;}
 #gw-footer{margin-left: 0;padding:15px;}
 li a.opt-a-high{z-index: 100;}
-a#nav-config{padding-right:20px;}
+/*a#nav-config{padding-right:20px;}*/
 .tab-pane ul li.control-sidebar-heading i{border-right: 5px;}
 li.side-li{list-style:none;}
 li.side-li a{display:block;padding:5px;}
@@ -4413,4 +4412,17 @@ ol#gw-breadcrumb >li + li::before {
 }
 .breadcrumb li a.active{
   color:#777;
+}
+.breadcrumb#gw-breadcrumb{
+  padding-right: 0;
+}
+.login-box-body label.checkbox-inline{
+  padding-left:0; 
+}
+
+.content-header > .breadcrumb > li + li::before {
+    content: "| ";
+}
+.content-header > .breadcrumb li.active {
+  font-size: 16px;
 }

@@ -12,8 +12,8 @@
 		<div class="gw-logo">
 			<a href="./?refresh" {if !empty($_W['setting']['copyright']['flogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['flogo']);}') no-repeat;"{/if}></a>
 		</div>
-	  <div class="login-box-body">
-	    <p class="login-box-msg">输入用户名和密码</p>
+		<div class="login-box-body">
+			<p class="login-box-msg">输入用户名和密码</p>
 			<form action="" method="post" role="form" onsubmit="return formcheck();">
 				<div class="form-group input-group">
 					<div class="input-group-addon"><i class="fa fa-user"></i></div>
@@ -28,13 +28,15 @@
 						<input type="checkbox" value="true" name="rember"> 记住用户名
 					</label>
 					<div class="pull-right">
-						{if !$_W['siteclose']}<a href="{url 'user/register'}" class="btn btn-link btn-lg">注册</a>{/if}
+						{if !$_W['siteclose']}
+							<a href="{url 'user/register'}" class="btn btn-link btn-lg">注册</a>
+						{/if}
 						<input type="submit" name="submit" value="登录" class="btn btn-primary btn-lg" />
 						<input name="token" value="{$_W['token']}" type="hidden" />
 					</div>
 				</div>
 			</form>
-	  </div><!-- /.login-box-body -->
+		</div><!-- /.login-box-body -->
 	</div><!-- /.login-box -->	
 </div>
 <div class="center-block footer" role="footer">

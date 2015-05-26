@@ -19,6 +19,17 @@
 				<div class="navbar-custom-menu">	
 					{if defined('IN_SOLUTION')}
 						<ul class="nav navbar-nav">
+							{php global $solution,$solutions;}
+							{if $_W['role'] != 'operator'}
+								<li><a href="{url 'home/welcome/ext'}"><i class="fa fa-reply-all"></i>返回公众号功能管理</a></li>
+							{/if}
+							{loop $solutions $row}
+								<li{if $row['name'] == $solution['name']} class="active"{/if}><a href="{url 'home/welcome/solution' array('m' => $row['name'])}"><i class="fa fa-cog"></i>{$row['title']}</a></li>
+							{/loop}
+							{if IMS_FAMILY != 'x'}
+								<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
+								<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
+							{/if}
 							<li class="dropdown">
 								<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" style="display:block; max-width:150px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; "><i class="fa fa-group"></i>{$_W['account']['name']} <b class="caret"></b></a>
 								<ul class="dropdown-menu">
@@ -44,19 +55,6 @@
 								</ul>
 							</li>
 						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							{php global $solution,$solutions;}
-							{if $_W['role'] != 'operator'}
-								<li><a href="{url 'home/welcome/ext'}"><i class="fa fa-reply-all"></i>返回公众号功能管理</a></li>
-							{/if}
-							{loop $solutions $row}
-								<li{if $row['name'] == $solution['name']} class="active"{/if}><a href="{url 'home/welcome/solution' array('m' => $row['name'])}"><i class="fa fa-cog"></i>{$row['title']}</a></li>
-							{/loop}
-							{if IMS_FAMILY != 'x'}
-								<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
-								<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
-							{/if}
-						</ul>
 					{else}
 						<ul class="nav navbar-nav">
 							{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('platform', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'platform'} class="active"{/if}><a href="{url 'home/welcome/platform'}"><i class="fa fa-cog"></i>基础设置</a></li>{/if}
@@ -65,19 +63,11 @@
 							{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('setting', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'setting'} class="active"{/if}><a href="{url 'home/welcome/setting'}"><i class="fa fa-umbrella"></i>功能选项</a></li>{/if}
 							{if !empty($_W['isfounder']) || empty($_W['setting']['permurls']['sections']) || in_array('ext', $_W['setting']['permurls']['sections'])}<li{if FRAME == 'ext'} class="active"{/if}><a href="{url 'home/welcome/ext'}"><i class="fa fa-cubes"></i>扩展功能</a></li>{/if}
 							{if FRAME == 'solution'}<li class="active"><a href="{url 'home/welcome/solution' array('m' => $m)}"><i class="fa fa-comments"></i>行业功能 - {$solution['title']}</a></li>{/if}
-							<!--
-							{if IMS_FAMILY != 'x'}
-							<li><a href="http://bbs.we7.cc"><i class="fa fa-comment"></i>微擎论坛</a></li>
-							<li><a href="http://manual.we7.cc"><i class="fa fa-suitcase"></i>帮助</a></li>
-							{/if}
-							-->
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
 							<!-- Control Sidebar Toggle Button -->
 							<li>
 								<a id="nav-config" href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
 							</li>
-						</ul>						
+						</ul>					
 					{/if}					
 				</div>
 		</div>
