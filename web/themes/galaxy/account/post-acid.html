@@ -25,11 +25,11 @@
 	{if $_GPC['step'] == 1}
 	<form action="" method="post"  class="form-horizontal" role="form" id="form1">
 		<input type="hidden" name="step" value="2">
-		<div class="panel panel-default">
+		<div class="box box-default">
 			<div class="panel-heading">
 				基础信息
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">名称</label>
 					<div class="col-sm-9 col-xs-12">
@@ -132,11 +132,11 @@
 		<input type="hidden" name="step" value="3">
 		<input type="hidden" name="flag" value="1">
 		<input type="hidden" name="uniacid" value="{$uniacid}">
-		<div class="panel panel-default">
+		<div class="box box-default">
 			<div class="panel-heading">
 				一键获取公众号信息
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">类型</label>
 					<div class="col-sm-9 col-xs-12">
@@ -185,11 +185,11 @@
 		
 		<input type="hidden" name="uniacid" value="{$uniacid}">
 		<input type="hidden" name="acid" value="{$acid}">
-		<div class="panel panel-default">
+		<div class="box box-default">
 			<div class="panel-heading">
 				设置公众号信息
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">类型</label>
 					<div class="col-sm-9 col-xs-12">
@@ -333,11 +333,11 @@
 		</div>
 	</form>
 	{elseif $_GPC['step']==4}
-		<div class="panel panel-default guide">
+		<div class="box box-default guide">
 			<div class="panel-heading">
 				引导页面
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<h4 class="alert alert-info">您绑定的微信公众号：<em>{$account['name']}</em>； 请按下列引导完成配置。</h4>
 				<div class="list-group">
 					<div class="list-group-item">

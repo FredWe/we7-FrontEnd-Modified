@@ -11,11 +11,11 @@
 	.more{cursor:pointer;}
 </style>
 <div class="clearfix">
-	<div class="panel panel-default">
+	<div class="box box-default">
 		<div class="panel-heading">
 			和 <span class="text-danger"> {$nickname} </span> 的聊天记录
 		</div>
-		<div class="panel-body" id="log" style="max-height:300px;overflow-y:scroll">
+		<div class="box-body" id="log" style="max-height:300px;overflow-y:scroll">
 			<div id="more" data-id="{$maxid}" class="text-center more text-info"><i class="fa fa-clock-o"></i> 查看更多消息</div>
 			<div id="prev" data-id="{$maxid}">
 				<div id="position"></div>
@@ -23,11 +23,11 @@
 			<div id="last" data-id="{$maxid}" style="margin-bottom:30px;"></div>
 		</div>
 	</div>
-	<div class="panel panel-default">
+	<div class="box box-default">
 		<div class="panel-heading">
 			和 <span class="text-danger"> {$nickname} </span> 的聊天
 		</div>
-		<div class="panel-body">
+		<div class="box-body">
 			<form action=""  class="form-horizontal" role="form" id="form0">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">消息类型</label>

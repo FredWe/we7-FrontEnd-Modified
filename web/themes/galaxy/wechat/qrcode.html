@@ -3,11 +3,11 @@
 {if $op == 'post'}
 <div class="clearfix">
 	<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
-		<div class="panel panel-default">
+		<div class="box box-default">
 			<div class="panel-heading">
 				添加卡券投放二维码
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<div class="form-group">
 					<label class="col-xs-12 col-sm-3 col-md-2 control-label">卡券名称</label>
 					<div class="col-sm-8 col-xs-12">
@@ -54,8 +54,8 @@
 			<a href="{php echo url('wechat/card/qr', array('op' => 'post', 'cid' => $cid))}" class="btn btn-success col-lg-1">添加投放二维码</a>
 		</div>
 	</div>
-	<div class="panel panel-default">
-		<div class="table-responsive panel-body">
+	<div class="box box-default">
+		<div class="table-responsive box-body">
 			<table class="table table-hover">
 				<thead>
 				<tr>

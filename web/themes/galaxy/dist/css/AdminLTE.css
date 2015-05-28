@@ -4426,3 +4426,4 @@ ol#gw-breadcrumb >li + li::before {
 .content-header > .breadcrumb li.active {
   font-size: 16px;
 }
+.btn-app i{padding-bottom: auto;}

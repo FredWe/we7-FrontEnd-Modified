@@ -9,7 +9,7 @@
 	<li><a href="{url 'account/display'}">公众号列表</a></li>
 	<li class="active">当前公众号</li>
 </ol>
-<div class="panel panel-default">
+<div class="box box-default">
 	<div class="panel-heading">
 		基本信息
 		<span class="pull-right">
@@ -17,7 +17,7 @@
 			<a href="{php echo url('account/bind/delete', array('acid' => $account['acid'], 'uniacid' => $account['uniacid']))}" class="img-rounded delete" onclick="return confirm('此操作不可恢复，确认吗？'); return false;">删除</a>
 		</span>
 	</div>
-	<div class="panel-body account-basicinformation">
+	<div class="box-body account-basicinformation">
 		<div class="row">
 			<div class="col-md-6"><span>公众号名称 : </span>{$account['name']}（{if $account['type'] == 1}微信{else}易信{/if}）</div>
 			<div class="col-md-6"><span>接入状态 : </span>{if $account['isconnect'] == 1}接入成功{else}未接入{/if}</div>
@@ -28,11 +28,11 @@
 		</div>
 	</div>
 </div>
-<div class="panel panel-default">
+<div class="box box-default">
 	<div class="panel-heading">
 		昨日关键指标
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 		<div class="account-stat-num row">
 			<div>新关注人数<span>{$add_num}</span></div>
 			<div>取消关注人数<span>{$cancel_num}</span></div>
@@ -41,11 +41,11 @@
 		</div>
 	</div>
 </div>
-<div class="panel panel-default">
+<div class="box box-default">
 	<div class="panel-heading">
 		今日关键指标
 	</div>
-	<div class="panel-body">
+	<div class="box-body">
 		<div class="account-stat-num row">
 			<div>新关注人数<span>{$today_add_num}</span></div>
 			<div>取消关注人数<span>{$today_cancel_num}</span></div>
@@ -55,11 +55,11 @@
 	</div>
 </div>
 
-<div class="panel panel-default">
+<div class="box box-default">
 	<div class="panel-heading">
 		关键指标详解
 	</div>
-	<div class="panel-body" id="scroll">
+	<div class="box-body" id="scroll">
 		<div class="pull-left">
 			<form action="" id="form1">
 				<input name="c" value="account" type="hidden" />

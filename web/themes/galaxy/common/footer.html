@@ -49,17 +49,11 @@
 								<i class="fa fa-angle-left pull-right"></i>
 							</a>
 							<ul class="treeview-menu">
-								<!--
-								<li><a href="{url 'user/profile/profile'}" target="_blank"><i class="fa fa-weixin fa-fw"></i> 我的账号</a></li>
-								`-->
 								{if $_W['role'] != 'operator'}
 									<li><a href="{url 'system/welcome'}" target="_blank"><i class="fa fa-sitemap fa-fw"></i> 系统选项</a></li>
 									<li><a href="{url 'system/welcome'}" target="_blank"><i class="fa fa-cloud-download fa-fw"></i> 自动更新</a></li>
 									<li><a href="{url 'system/updatecache'}" target="_blank"><i class="fa fa-refresh fa-fw"></i> 更新缓存</a></li>
 								{/if}
-								<!--
-								<li><a href="{url 'user/logout'}"><i class="fa fa-sign-out fa-fw"></i> 退出系统</a></li>
-								-->
 							</ul>
 						</li>
 						<!-- Menu Footer-->

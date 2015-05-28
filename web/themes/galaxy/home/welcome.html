@@ -7,33 +7,33 @@
 <section class="content"> 
 	<div class="welcome-container">
 		{if $do != 'ext' && $do != 'solution'}
-		<div class="row">
-			<div class="col-md-12">
-				<div class="box box-default">
-	                <div class="box-header with-border">
-	                  <h3 class="box-title"><i class="fa fa-plane"></i> 快捷操作</h3>
-	                  <div class="box-tools pull-right">
-	                    <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
-	                    <button data-widget="remove" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
-	                  </div>
-	                </div><!-- /.box-header -->
-		            <div class="box-body">
-						<div class="shortcut clearfix">
-							<a href="{php echo url('platform/reply', array('m' => 'userapi'))}">
-								<i class="fa fa-sitemap"></i>
-								<span>自定义接口</span>
-							</a>
-							{loop $shortcuts $shortcut}
-								<a href="{$shortcut['link']}" title="{$shortcut['title']}">
-									<img src="{$shortcut['image']}" alt="{$shortcut['title']}" class="img-rounded" />
-									<span>{$shortcut['title']}</span>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box box-default">
+		                <div class="box-header with-border">
+		                  <h3 class="box-title"><i class="fa fa-plane"></i> 快捷操作</h3>
+		                  <div class="box-tools pull-right">
+		                    <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+		                    <button data-widget="remove" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
+		                  </div>
+		                </div><!-- /.box-header -->
+			            <div class="box-body">
+							<div class="shortcut clearfix">
+								<a href="{php echo url('platform/reply', array('m' => 'userapi'))}">
+									<i class="fa fa-sitemap"></i>
+									<span>自定义接口</span>
 								</a>
-							{/loop}
-						</div>
-	                </div><!-- /.box-body -->
-	      		</div>
+								{loop $shortcuts $shortcut}
+									<a href="{$shortcut['link']}" title="{$shortcut['title']}">
+										<img src="{$shortcut['image']}" alt="{$shortcut['title']}" class="img-rounded" />
+										<span>{$shortcut['title']}</span>
+									</a>
+								{/loop}
+							</div>
+		                </div><!-- /.box-body -->
+		      		</div>
+				</div>
 			</div>
-		</div>
 		{/if}
 	{if $do == 'platform'}
 	{template 'home/welcome-platform'}

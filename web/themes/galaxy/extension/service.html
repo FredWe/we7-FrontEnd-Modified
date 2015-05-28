@@ -3,7 +3,7 @@
 <div class="clearfix">	
 	<div class="panel panel-info">
 		<div class="panel-heading">筛选</div>
-		<div class="panel-body">
+		<div class="box-body">
 			<form action="./index.php" method="get" class="form-horizontal" role="form">
 			<input type="hidden" name="c" value="extension" />
 			<input type="hidden" name="a" value="service" />
@@ -38,7 +38,7 @@
 		</div>
 		{/if}
 		{loop $ds $row}
-		<div class="panel panel-default">
+		<div class="box box-default">
 			<div class="panel-heading clearfix">
 				<div class="pull-left">
 					{$row['name']}
@@ -48,7 +48,7 @@
 					<a class="btn btn-default btn-xs" onclick="return confirm('删除规则将同时删除关键字与回复，确认吗？');return false;" href="{php echo url('extension/service/delete', array('rid' => $row['id']))}"><i class="fa fa-times"></i> 删除</a>
 				</div>
 			</div>
-			<div class="panel-body">
+			<div class="box-body">
 				{$row['description']}
 			</div>
 		</div>

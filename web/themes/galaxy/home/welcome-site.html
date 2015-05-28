@@ -1,4 +1,4 @@
-<style>
+<!--style>
 	.template .item{position:relative;display:block;float:left;border:1px #ddd solid;border-radius:5px;background-color:#fff;padding:5px;width:190px;margin:0 10px 10px 0;}
 	.template .title{margin:5px auto;line-height:2em;}
 	.template .item img{width:178px;height:270px;}
@@ -7,8 +7,7 @@
 	.home-container .tile{float:left; display:block; text-decoration:none; outline:none; width:6em; height:6em; margin:.4em;}
 	.home-container i{display:block; color:#333; height:1em; overflow: hidden; font-size:2em; margin:.25em .2em;}
 	.home-container span{display:block; width:100%; overflow:hidden;}
-</style>
-
+</style-->
 <div class="row">
 	<div class="col-md-6">
 		<div class="box box-info">
@@ -28,7 +27,7 @@
 					<div class="col-md-4 col-sm-4 col-xs-12">
 						<div class="item">
 							<div class="title">
-								<img src="../app/themes/{$template['name']}/preview.jpg" class="img-rounded" />
+								<img alt="preview" src="../app/themes/{if !empty($template['name'])}$template['name']/{/if}preview.jpg" class="img-rounded" />
 							</div>
 						</div>						
 					</div>

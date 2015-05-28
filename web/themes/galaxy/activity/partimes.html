@@ -10,11 +10,11 @@
 <section class="content">
 	{if $do == 'post'}
 		<form action="" method="post" class="form-horizontal form" enctype="multipart/form-data" id="form1">
-			<div class="panel panel-default">
+			<div class="box box-default">
 				<div class="panel-heading">
 					兑换活动参与次数
 				</div>
-				<div class="panel-body">
+				<div class="box-body">
 					<div class="form-group">
 						<label class="col-xs-12 col-sm-3 col-md-2 control-label">兑换名称</label>
 						<div class="col-sm-9 col-xs-12">
@@ -113,7 +113,7 @@
 	{elseif $do == 'display'}
 		<div class="panel panel-info">
 			<div class="panel-heading">筛选</div>
-			<div class="panel-body">
+			<div class="box-body">
 				<form action="./index.php" method="get" class="form-horizontal" role="form">
 				<input type="hidden" name="c" value="activity" />
 				<input type="hidden" name="a" value="partimes" />

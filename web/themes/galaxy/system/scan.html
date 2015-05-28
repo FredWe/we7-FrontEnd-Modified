@@ -66,9 +66,9 @@
 </div>
 {elseif $op == 'display'}
 <div class="clearfix">
-	<div class="panel panel-default">
+	<div class="box box-default">
 		<div class="panel-heading">查杀报告</div>
-		<div class="panel-body table-responsive">
+		<div class="box-body table-responsive">
 			<table class="table">
 				<thead>
 				<th width="500">文件地址</th>
@@ -114,9 +114,9 @@
 </div>
 {elseif $op == 'view'}
 <div class="clearfix">
-	<div class="panel panel-default">
+	<div class="box box-default">
 		<div class="panel-heading">查看文件 <span class="text-danger">[{$file_tmp}]</span></div>
-		<div class="panel-body">
+		<div class="box-body">
 			<div style="margin-bottom: 15px">
 				{if $info['danger']}
 				<span class="label label-primary">危险文件</span>
