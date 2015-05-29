@@ -8,7 +8,7 @@
 </section>
 <section class="content">
 {if $do == 'display'}
-<script type="text/javascript">
+<script>
 	require(['jquery', 'util'], function($, u){
 		$("#form1").submit(function(){
 			var bool=true;
@@ -28,50 +28,48 @@
 		});
 	});
 </script>
-<div class="box box-default">
-<div class="box-body table-responsive">
-	<form action="" method="post" id="form1" >
-		<table class="table table-hover">
-			<thead class="navbar-inner">
-				<tr>
-					<th style="width:15%">排序</th>
-					<th style="width:30%">会员组名称</th>
-					<th style="width:30%"></th>
-					<th>操作</th>
-				</tr>
-			</thead>
-			<tbody>
-				{loop $list $item}
-				<tr>
-					<td><input type="text" class="form-control" name="orderlist[{$item['groupid']}]" value="{$item['orderlist']}"></td>
-					<td style="vertical-align:middle;">
-						<input type="input" name="title[{$item['groupid']}]" class="form-control" value="{$item['title']}" />
-					</td>
-					<td style="vertical-align:middle;">
-						{if $item['isdefault'] == '1'}
-							<span class="label label-info">默认组</span>
-						{/if}
-					</td>
-					<td style="vertical-align:middle;">
-						<a href="{php echo url('mc/group/post', array('id' => $item['groupid']));}" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="编辑"><i class="fa fa-pencil"></i></a>
-						<a href="{php echo url('mc/group/delete', array('id' => $item['groupid']));}" onclick="return confirm('确认删除吗？');return false;" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="删除"><i class="fa fa-times"></i></a>
-						{if $item['isdefault'] != '1'}
-							<a href="{php echo url('mc/group/set', array('id' => $item['groupid']));}" onclick="return confirm('每个公众号只能设置一个默认组，确定设置吗？');return false;" class="btn btn-default btn-sm">设为默认组</a>
-						{/if}
-					</td>
-				</tr>
-				{/loop}
-			</tbody>
-			<tr>
-				<td colspan="4" style="text-align:left">
-					<input name="token" type="hidden" value="{$_W['token']}" />
-					<input type="submit" class="btn btn-primary col-lg-1" name="submit" value="提交" />
-				</td>
-			</tr>
-		</table>
+	<form class="form form-horizontal" action="" method="post" id="form1" >
+		<div class="box box-default">
+			<div class="box-body table-responsive">
+				<table class="table table-hover">
+					<thead class="navbar-inner">
+						<tr>
+							<th style="width:15%">排序</th>
+							<th style="width:30%">会员组名称</th>
+							<th style="width:30%"></th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						{loop $list $item}
+						<tr>
+							<td><input type="text" class="form-control" name="orderlist[{$item['groupid']}]" value="{$item['orderlist']}"></td>
+							<td style="vertical-align:middle;">
+								<input type="input" name="title[{$item['groupid']}]" class="form-control" value="{$item['title']}" />
+							</td>
+							<td style="vertical-align:middle;">
+								{if $item['isdefault'] == '1'}
+									<span class="label label-info">默认组</span>
+								{/if}
+							</td>
+							<td style="vertical-align:middle;">
+								<a href="{php echo url('mc/group/post', array('id' => $item['groupid']));}" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="编辑"><i class="fa fa-pencil"></i></a>
+								<a href="{php echo url('mc/group/delete', array('id' => $item['groupid']));}" onclick="return confirm('确认删除吗？');return false;" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="删除"><i class="fa fa-times"></i></a>
+								{if $item['isdefault'] != '1'}
+									<a href="{php echo url('mc/group/set', array('id' => $item['groupid']));}" onclick="return confirm('每个公众号只能设置一个默认组，确定设置吗？');return false;" class="btn btn-default btn-sm">设为默认组</a>
+								{/if}
+							</td>
+						</tr>
+						{/loop}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="form-group col-sm-12">
+			<input name="token" type="hidden" value="{$_W['token']}" />
+			<input type="submit" class="btn btn-primary col-lg-1" name="submit" value="提交" />
+		</div>
 	</form>
-</div>
-</div>
 {/if}
 {if $do == 'post'}
 <script>
@@ -92,7 +90,7 @@
 	<form class="form-horizontal form" id="form2" action="" method="post">
 		<div class="box box-default">
 			<div class="box-header with-border">
-				<h3 class="box-title">会员组参数</h3>				
+				<h3 class="box-title">会员组参数</h3>
 			</div>
 			<div class="box-body">
 				<div class="form-group">

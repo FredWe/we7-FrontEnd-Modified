@@ -225,7 +225,7 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
+	<script>
 		require(['jquery'], function($){
 			var icontype = $('input[name="icontype"]:checked').val();
 			if (icontype == 1) {
@@ -261,7 +261,7 @@
 		});
 	</script>
 	{elseif $do == 'display'}
-	<script type="text/javascript">
+	<script>
 		require(['bootstrap.switch', 'util'], function($, u){
 			$(function(){
 				$(':checkbox').bootstrapSwitch();

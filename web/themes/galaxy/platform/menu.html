@@ -1,6 +1,6 @@
 {php $newUI = true;}
 {template 'common/header'}
-<script type="text/javascript">
+<script>
 	require(['angular', 'jquery.ui', 'underscore', 'util'], function(angular, $, _, util){
 		angular.module('app', []).controller('menuDesigner', function($scope, $http){
 			$scope.menus = {php echo json_encode($menus);};
@@ -280,7 +280,7 @@
 		});
 	});	
 </script>
-<style type="text/css">
+<style>
 	.table-striped td{padding-top: 10px;padding-bottom: 10px}
 	a{font-size:14px;}
 	a:hover, a:active{text-decoration:none; color:red;}

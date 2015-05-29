@@ -8,7 +8,7 @@
 		<li{if $do == 'app'} class="active"{/if}><a href="{php echo url('profile/notify/app')}">自有APP通知(未开放)</a></li>
 	</ul>	
 </section>
-<script type="text/javascript">
+<script>
 	require(['jquery'], function($){
 		{if $notify['mail']['smtp']['type'] == 'custom'}
 			$("#smtp").show();

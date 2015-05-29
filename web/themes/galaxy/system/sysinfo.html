@@ -1,10 +1,5 @@
 {template 'common/header-gw'}
-<ol class="breadcrumb">
-	<li><a href="./?refresh"><i class="fa fa-home"></i></a></li>
-	<li><a href="{url 'system/welcome'}">系统</a></li>
-	<li class="active">系统信息</li>
-</ol>
-<div class="main">
+<div class="container">
 	<div class="panel panel-info">
 		<div class="panel-heading">用户信息</div>
 		<div class="box-body table-responsive">
@@ -20,7 +15,6 @@
 		</table>
 		</div>
 	</div>
-	
 	<div class="panel panel-info">
 		<div class="panel-heading">系统信息</div>
 		<div class="box-body table-responsive">
@@ -73,7 +67,6 @@
 		</table>
 		</div>
 	</div>
-
 	{if $_W['isfounder']}
 		<div class="panel panel-info">
 			<div class="panel-heading">微擎开发团队</div>

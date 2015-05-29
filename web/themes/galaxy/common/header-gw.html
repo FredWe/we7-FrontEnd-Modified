@@ -7,11 +7,6 @@
 			{if !empty($_W['uniacid']) && !defined('IN_MESSAGE')}
 				<div class="navbar navbar-inverse navbar-static-top" role="navigation">
 					<div class="container-fluid">
-					<!--div class="navbar-header">
-					  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-					    <i class="fa fa-bars"></i>
-					  </button>              
-					</div-->
 						<ul class="nav navbar-nav">
 							<li class="active">
 								<a href="./?refresh">
@@ -42,13 +37,15 @@
 							<h3>
 								{php if(isset($title)) $_W['page']['title'] = $title}
 								{if !empty($_W['page']['title'])}
-								{$_W['page']['title']}
+									{$_W['page']['title']}
+								{/if}
+								{if $action == 'logs'}
+									查看日志
 								{/if}
 							</h3>	
 						</div>
 						<div class="col-sm-6">
 							<div class="navbar navbar-static-top" role="navigation" style="padding-top:20px;">
-									<!--a class="navbar-brand gw-logo" href="./?refresh" {if !empty($_W['setting']['copyright']['blogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['blogo']);}') no-repeat;"{/if}></a-->
 									<ol id="gw-breadcrumb" class="breadcrumb pull-right">
 										<li>
 											<a href="{url 'account/display'}" class="tile img-rounded{if $controller == 'account'} active{/if}">
@@ -94,7 +91,7 @@
 								{/if}
 								{if $redirect}
 								<p><a href="{$redirect}" class="alert-link">如果你的浏览器没有自动跳转，请点击此链接</a></p>
-								<script type="text/javascript">
+								<script>
 									setTimeout(function () {
 										location.href = "{$redirect}";
 									}, 3000);

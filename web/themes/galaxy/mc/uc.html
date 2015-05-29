@@ -1,6 +1,6 @@
 {php $newUI = true;}
 {template 'common/header'}
-<script type="text/javascript">
+<script>
 	require(['angular', 'jquery', 'util'], function(angular, $, u){
 		angular.module('app', []).controller('ucSetting', function($scope, $http) {
 			$scope.uc = {php echo json_encode($uc);};

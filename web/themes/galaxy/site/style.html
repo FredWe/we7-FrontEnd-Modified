@@ -41,7 +41,7 @@
 		</div>
 	</div>	
 </section>
-<script type="text/javascript">
+<script>
 	function createtemplate(name, file) {
 		require(['jquery'], function($){
 			if (file && confirm('此操作辅助生成您需要重定义的模板空文件，你也可以在文件目录中手动添加或是修改些文件，是否确定要生成吗？')) {
@@ -216,7 +216,7 @@
 		</div>
 	</div>
 </script>
-<script type="text/javascript">
+<script>
 	function addFormItem() {
 		$('#customForm').append($('#item-form-html').html());
 	}
@@ -247,7 +247,7 @@
 			<div class="nav-tabs-custom">
 				<ul class="nav nav-tabs">
 					<li class="pull-left header">
-						<a href="javascript:;" class="navbar-brand">微站风格类型</a>
+						微站风格类型
 					</li>
 					<li {if empty($_GPC['type']) || $_GPC['type'] == 'all'} class="active" {/if}>
 						<a href="{php echo url('site/style/template', array('type' => 'all'));}">全部</a>
@@ -301,7 +301,7 @@
 		</div>
 	</div>
 </section>
-<script type="text/javascript">
+<script>
 	require(['bootstrap'],function($){
 		$('.item .item-build-btn').popover();
 	});

@@ -1,9 +1,5 @@
 {template 'common/header-gw'}
-	<ol class="breadcrumb">
-		<li><a href="./?refresh"><i class="fa fa-home"></i></a></li>
-		<li><a href="{url 'account/display'}">公众号列表</a></li>
-		<li class="active">编辑主公众号</li>
-	</ol>
+<div class="container">
 	<ul class="nav nav-tabs">
 		<li><a href="{url 'account/post/basic' array('uniacid' => $uniacid)}">账号基本信息</a></li>
 		{if $_W['isfounder']}
@@ -44,14 +40,16 @@
 			</li>
 			{/loop}
 		</ul>
-	</div>
-	<script>
-		require(['bootstrap'],function($){
-			$('.account .btn').hover(function(){
-				$(this).tooltip('show');
-			},function(){
-				$(this).tooltip('hide');
-			});
+	</div>	
+</div>
+
+<script>
+	require(['bootstrap'],function($){
+		$('.account .btn').hover(function(){
+			$(this).tooltip('show');
+		},function(){
+			$(this).tooltip('hide');
 		});
-	</script>
+	});
+</script>
 {template 'common/footer-gw'}

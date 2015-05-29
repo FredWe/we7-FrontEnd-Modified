@@ -9,8 +9,10 @@
 </style>
 <div class="login-page">
 	<div class="login-box">
-		<div class="gw-logo">
-			<a href="./?refresh" {if !empty($_W['setting']['copyright']['flogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['flogo']);}') no-repeat;"{/if}></a>
+		<div class="gw-logo-container">
+			<div class="gw-logo">
+				<a href="./?refresh" {if !empty($_W['setting']['copyright']['flogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['flogo']);}') no-repeat;"{/if}></a>
+			</div>			
 		</div>
 		<div class="login-box-body">
 			<p class="login-box-msg">输入用户名和密码</p>

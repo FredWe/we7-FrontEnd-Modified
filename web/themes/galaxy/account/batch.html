@@ -1,9 +1,5 @@
 {template 'common/header-gw'}
-	<ol class="breadcrumb">
-		<li><a href="./?refresh"><i class="fa fa-home"></i></a></li>
-		<li><a href="{url 'system/welcome'}">系统</a></li>
-		<li class="active">公众号列表</li>
-	</ol>
+<div class="container">
 	<div class="clearfix" style="margin-bottom:5em;">
 		<form action="">
 			<input type="hidden" name="c" value="account">
@@ -94,9 +90,8 @@
 	</div>
 	<div id="footer-group" class="hide">
 			<span name="submit" id="submit" class="pull-right btn btn-primary" onclick="$('#form-group').submit();">保存</span>
-	</div>
-	
-	
+	</div>	
+</div>
 <script>
 	require(['bootstrap', 'util', 'biz'],function($, u, biz){
 		$('.account .panel-heading a, .btn').hover(function(){
@@ -162,8 +157,5 @@
 
 		});
 	});
-	
-
-	
 </script>
 {template 'common/footer-gw'}

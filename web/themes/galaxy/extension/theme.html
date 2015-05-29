@@ -47,7 +47,7 @@
 					</div>
 				</div>
 			{/loop}
-			<script type="text/javascript">
+			<script>
 				require(['jquery'], function($){
 					$.post('{php echo url('extension/theme/check');}', {foo: 'upgrade'},function(dat){
 						try {
@@ -122,7 +122,7 @@
 					</div>
 				</div>
 			{/if}
-			<script type="text/javascript">
+			<script>
 				require(['angular', 'jquery', 'util'], function(angular, $, u){
 					angular.module('app', []).controller('listInstallThemes', function($scope, $http) {
 						$.post('{php echo url('extension/theme/check');}', {foo: 'install'},function(dat){

@@ -90,7 +90,7 @@
 					{/if}
 					{if $redirect}
 					<p><a href="{$redirect}">如果你的浏览器没有自动跳转，请点击此链接</a></p>
-					<script type="text/javascript">
+					<script>
 						setTimeout(function () {
 							location.href = "{$redirect}";
 						}, 3000);

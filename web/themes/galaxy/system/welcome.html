@@ -1,11 +1,7 @@
 {template 'common/header-gw'}
-<!--ol class="breadcrumb">
-	<li><a href="./?refresh"><i class="fa fa-home"></i></a></li>
-	<li class="active">系统</li>
-</ol-->	
 <!--内容-->
-{if $_W['isfounder']}
-	<div class="container" style="margin-bottom:5em;">
+<div class="container" style="margin-bottom:5em;">
+	{if $_W['isfounder']}
 		<div class="row">
 			<div class="col-md-6">
 				<h4>云服务</h4>
@@ -115,9 +111,7 @@
 				</div>				
 			</div>
 		</div>
-	</div>
-{else}
-	<div class="container" style="margin-bottom:5em;">
+	{else}
 		<h4>公众号</h4>
 		<div class="clearfix">
 			<a href="{url 'account/display'}" class="btn btn-app">
@@ -132,6 +126,6 @@
 				<span>我的账户</span>
 			</a>
 		</div>
-	</div>
-{/if}
+	{/if}
+</div>
 {template 'common/footer-gw'}

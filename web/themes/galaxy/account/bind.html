@@ -1,13 +1,5 @@
 {if $action == 'bind'}
 {template 'common/header-gw'}
-<ol class="breadcrumb">
-	<li><a href="./?refresh"><i class="fa fa-home"></i></a></li>
-	<li><a href="{url 'system/welcome'}">系统</a></li>
-	<li><a href="{url 'account/display'}">公众号列表</a></li>
-	<li><a href="{url 'account/post/list' array('uniacid' => $uniacid)}">编辑主公众号</a></li>
-	{if empty($account)}<li class="active">添加子公众号</li>{/if}
-	{if !empty($account)}<li class="active">编辑子公众号</li>{/if}
-</ol>
 <ul class="nav nav-tabs">
 	<li{if $do == 'basic'} class="active"{/if}><a href="{url 'account/post/basic' array('uniacid' => $uniacid)}">账号基本信息</a></li>
 	{if $_W['isfounder']}<li><a href="{url 'account/permission' array('uniacid' => $uniacid)}">账号操作员列表</a></li>{/if}
@@ -273,7 +265,7 @@
 </div>
 {template 'common/footer-gw'}
 {/if}
-<script type="text/javascript">
+<script>
 	require(['filestyle'], function($){
 		$(".form-group").find(':file').filestyle({buttonText: '上传图片'});
 		

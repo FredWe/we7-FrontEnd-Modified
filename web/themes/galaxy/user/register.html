@@ -45,9 +45,12 @@
 </style>
 <div class="register-page">
 	<div class="register-box">
-		<div class="login-logo">
-			<a href="./?refresh" {if !empty($_W['setting']['copyright']['flogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['flogo']);}') no-repeat;"{/if}></a>
+		<div class="gw-logo-container">
+			<div class="gw-logo">
+				<a href="./?refresh" {if !empty($_W['setting']['copyright']['flogo'])}style="background:url('{php echo tomedia($_W['setting']['copyright']['flogo']);}') no-repeat;"{/if}></a>
+			</div>			
 		</div>
+
 
 	  <div class="register-box-body">
 	    <p class="login-box-msg">注册一个新用户</p>
@@ -92,8 +95,8 @@
 						<div class="col-xs-6 col-xs-offset-6">
 							<div class="pull-right">
 								<a href="{url 'user/login'}" class="btn btn-link">登录</a>
-								<input type="submit" name="submit" value="注册" class="btn btn-default" />
-								<input name="token" value="{$_W['token']}" type="hidden" />
+								<input class="btn btn-primary" type="submit" name="submit" value="注册"/>
+								<input name="token" value="{$_W['token']}" type="hidden"/>
 							</div>
 						</div><!-- /.col -->
 					</div>					
@@ -110,7 +113,7 @@
 	</div>
 </div>
 <script>
-document.getElementById("year").innerHTML = new Date().getFullYear();
+	document.getElementById("year").innerHTML = new Date().getFullYear();
 </script>
 </body>
 </html>

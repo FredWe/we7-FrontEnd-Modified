@@ -621,7 +621,7 @@ a:focus {
   .sidebar-mini.sidebar-collapse .sidebar-menu > li > .treeview-menu,
   .sidebar-mini.sidebar-collapse .sidebar-menu > li > a > .pull-right,
   .sidebar-mini.sidebar-collapse .sidebar-menu li.header {
-    display: none!important;
+    display: none;
   }
   .sidebar-mini.sidebar-collapse .main-header .logo {
     width: 50px;
@@ -2384,7 +2384,7 @@ a:focus {
 }
 .nav-tabs-custom > .nav-tabs > li {
   border-top: 3px solid transparent;
-  margin-bottom: -2px;
+  margin-bottom: -1px;
   margin-right: 5px;
 }
 .nav-tabs-custom > .nav-tabs > li > a {
@@ -4395,10 +4395,12 @@ h3.control-sidebar-heading{margin-top: 0;}
     color: #f6f6f6;
 }
 .gw-logo {
-    background: rgba(0, 0, 0, 0) url("../img/LOGO100.png") no-repeat scroll 0 0;
+    background: url("../img/LOGO100.png") no-repeat scroll 0 0;
     display: inline-block;
-    height: 4em;
-    width: 420px;
+    background-size: contain;
+    margin-bottom: 1em;
+    height: 8em;
+    width: 8em;
 }
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
     margin-left: 0;
@@ -4426,4 +4428,27 @@ ol#gw-breadcrumb >li + li::before {
 .content-header > .breadcrumb li.active {
   font-size: 16px;
 }
-.btn-app i{padding-bottom: auto;}
+.btn-app i{
+  padding-bottom: auto;
+}
+.gw-logo-container{
+  text-align: center;
+}
+#reply-post{
+  list-style-type: none;
+}
+.navbar-brand{
+  font-size: 1.07em;
+  line-height: 1em;
+  height: auto;
+  padding: 1em;
+}
+/*
+.sidebar-mini.sidebar-collapse .tab-content .main-sidebar .user-panel > .info,
+.sidebar-mini.sidebar-collapse .tab-content .sidebar-form,
+.sidebar-mini.sidebar-collapse .tab-content .sidebar-menu > li > a > span,
+.sidebar-mini.sidebar-collapse .tab-content .sidebar-menu > li > .treeview-menu,
+.sidebar-mini.sidebar-collapse .tab-content .sidebar-menu > li > a > .pull-right,
+.sidebar-mini.sidebar-collapse .tab-content .sidebar-menu li.header {
+  display: block;
+}*/
